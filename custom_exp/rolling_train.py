@@ -10,6 +10,10 @@ Features:
 """
 import os
 import sys
+from pathlib import Path
+# Add project root to sys.path to allow importing custom_exp.models
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 import pickle
 import warnings
 from pathlib import Path
@@ -25,9 +29,10 @@ import qlib
 from qlib.constant import REG_CN
 from qlib.data import D
 from qlib.data.dataset import DatasetH, TSDatasetH
+from qlib.contrib.data.dataset import MTSDatasetH
 from qlib.data.dataset.handler import DataHandlerLP
 from qlib.utils import init_instance_by_config
-from qlib.contrib.data.handler import Alpha158
+from qlib.contrib.data.handler import Alpha158, Alpha360
 from qlib.contrib.evaluate import risk_analysis
 from qlib.contrib.eva.alpha import calc_ic
 from qlib.backtest import backtest as normal_backtest
@@ -37,7 +42,7 @@ import plotly.io as pio
 
 from config import (
     RollingConfig, ModelConfig, ALL_MODELS,
-    LIGHTGBM_CONFIG, get_backtest_config
+    get_backtest_config
 )
 
 warnings.filterwarnings("ignore")
@@ -90,16 +95,22 @@ class RollingTrainer:
         
         # Setup output directories
         self.base_dir = Path(self.config.output_dir)
-        self.pred_dir = self.base_dir / "model_pred" / self.model_name
-        self.weight_dir = self.base_dir / "weights" / self.model_name
-        self.pdf_dir = self.base_dir / "pdf" / self.model_name
-        self.log_dir = self.base_dir / "log"
+        
+        # Create unique run directory with timestamp
+        run_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        self.run_dir = self.base_dir / f"run_{run_timestamp}_{self.model_config.name}_{self.config.train_years}y"
+        
+        self.pred_dir = self.run_dir / "pred"
+        self.weight_dir = self.run_dir / "weights"
+        self.pdf_dir = self.run_dir / "pdf"
+        self.log_dir = self.run_dir / "log"
         
         for d in [self.pred_dir, self.weight_dir, self.pdf_dir, self.log_dir]:
             d.mkdir(parents=True, exist_ok=True)
         
         # Setup logging to file
-        self.log_file = self._setup_logger()
+        self.log_file = self._setup_logger(run_timestamp)
+        logger.info(f"Run directory: {self.run_dir}")
         logger.info(f"Logging to {self.log_file}")
         logger.info(f"Model name: {self.model_name}")
         if self.test_mode:
@@ -129,10 +140,11 @@ class RollingTrainer:
         
         return "_".join(parts)
     
-    def _setup_logger(self) -> Path:
+    def _setup_logger(self, timestamp: str = None) -> Path:
         """Setup loguru to output to both console and file"""
         self.log_dir.mkdir(parents=True, exist_ok=True)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        if timestamp is None:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         log_file = self.log_dir / f"{self.model_name}_{timestamp}.log"
         
         logger.remove()
@@ -193,6 +205,12 @@ class RollingTrainer:
         fit_end: str,
     ):
         """Create dataset with given segments - use TSDatasetH for time-series models"""
+        # dynamic handler class
+        if hasattr(qlib.contrib.data.handler, self.model_config.handler_class):
+            HandlerClass = getattr(qlib.contrib.data.handler, self.model_config.handler_class)
+        else:
+            raise ValueError(f"Unknown handler class: {self.model_config.handler_class}")
+
         handler_config = {
             "start_time": train_seg[0],
             "end_time": test_seg[1],
@@ -200,7 +218,25 @@ class RollingTrainer:
             "fit_end_time": fit_end,
             "instruments": self.config.market,
         }
-        handler = Alpha158(**handler_config)
+        
+        # Merge extra handler kwargs
+        handler_config.update(self.model_config.handler_kwargs)
+        
+        # Add processors if specified in config
+        if self.model_config.learn_processors is not None:
+            handler_config["learn_processors"] = self.model_config.learn_processors
+        if self.model_config.infer_processors is not None:
+            handler_config["infer_processors"] = self.model_config.infer_processors
+
+        logger.info(f"Initializing {self.model_config.handler_class}...")
+        handler = HandlerClass(**handler_config)
+        
+        # Log Label configuration for user verification
+        try:
+            label_config = handler.get_label_config()
+            logger.info(f"Label Config: {label_config}")
+        except Exception:
+            logger.info("Could not retrieve explicit label config (handler may use default)")
         
         segments = {
             "train": train_seg,
@@ -208,17 +244,38 @@ class RollingTrainer:
             "test": test_seg,
         }
         
-        if self.model_config.is_ts:
-            dataset = TSDatasetH(
-                handler=handler,
-                segments=segments,
-                step_len=self.model_config.step_len,
-            )
-        else:
-            dataset = DatasetH(
-                handler=handler,
-                segments=segments,
-            )
+        # Resolve dataset class
+        dataset_class_name = self.model_config.dataset_class
+        if dataset_class_name == "TSDatasetH" and not self.model_config.is_ts:
+             # Fallback for legacy configs that might not have set dataset_class but set is_ts
+             # (Though config.py defaults dataset_class="DatasetH", so if is_ts=True we might want TSDatasetH)
+             # But let's rely on explicit config.
+             pass
+        
+        DATASET_MAP = {
+            "DatasetH": DatasetH,
+            "TSDatasetH": TSDatasetH,
+            "MTSDatasetH": MTSDatasetH,
+        }
+        
+        if dataset_class_name not in DATASET_MAP:
+            raise ValueError(f"Unknown dataset class: {dataset_class_name}")
+            
+        DatasetClass = DATASET_MAP[dataset_class_name]
+        
+        # Prepare arguments
+        dataset_kwargs = self.model_config.dataset_kwargs.copy()
+        
+        # Legacy support: if TSDatasetH and step_len not in kwargs, take from model_config
+        if dataset_class_name == "TSDatasetH" and "step_len" not in dataset_kwargs:
+            dataset_kwargs["step_len"] = self.model_config.step_len
+            
+        # Instantiate
+        dataset = DatasetClass(
+            handler=handler,
+            segments=segments,
+            **dataset_kwargs
+        )
         
         return dataset
     
@@ -228,6 +285,8 @@ class RollingTrainer:
         
         if "GPU" in model_kwargs:
             model_kwargs["GPU"] = self.gpu_id
+        if "gpu_device_id" in model_kwargs:
+            model_kwargs["gpu_device_id"] = self.gpu_id
         
         # In test mode, use minimal epochs
         if self.test_mode:
@@ -522,7 +581,10 @@ class RollingTrainer:
         pred_normalized = self._cross_sectional_normalize(pred_df)
         
         # Get labels for IC calculation
-        label_df = dataset.prepare("test", col_set="label")
+        # NOTE: If dataset is TSDatasetH, prepare() returns TSDataSampler which pd.concat doesn't support.
+        # We must use a standard DatasetH to get the label DataFrame for evaluation.
+        eval_dataset = DatasetH(handler=dataset.handler, segments=dataset.segments)
+        label_df = eval_dataset.prepare("test", col_set="label")
         label_df.columns = ["label"]
         
         # Calculate metrics for current model
@@ -781,10 +843,10 @@ class RollingTrainer:
         """Run all rolling folds"""
         self.all_periods = self._generate_rolling_periods()
         
-        # In test mode, only run first 2 folds
-        if self.test_mode and len(self.all_periods) > 2:
-            self.all_periods = self.all_periods[:2]
-            logger.info(f"TEST MODE: Limiting to {len(self.all_periods)} folds")
+        # In test mode, only run first 1 fold
+        if self.test_mode and len(self.all_periods) > 0:
+            self.all_periods = self.all_periods[:1]
+            logger.info(f"TEST MODE: Limiting to {len(self.all_periods)} fold (First fold only)")
         
         logger.info(f"Total {len(self.all_periods)} rolling folds to train")
         
@@ -830,12 +892,14 @@ def main():
     parser.add_argument("--test_years", type=int, default=1,
                        help="Test years")
     parser.add_argument("--gpu", type=int, default=0,
-                       help="GPU ID to use for PyTorch models")
+                       help="GPU ID")
     parser.add_argument("--strategy", type=str, default="topk",
                        choices=["topk", "long_only"],
-                       help="Backtest strategy type")
+                       help="Backtest strategy")
     parser.add_argument("--test", action="store_true",
-                       help="Test mode: minimal epochs and only 2 folds")
+                       help="Run in test mode (minimal data/epochs)")
+    parser.add_argument("--output_dir", type=str, default=None,
+                       help="Custom output directory")
     
     args = parser.parse_args()
     
@@ -848,6 +912,9 @@ def main():
         market=args.market,
         benchmark="SH000905" if "500" in args.market else "SH000300",
     )
+    
+    if args.output_dir:
+        rolling_config.output_dir = args.output_dir
     
     model_config = ALL_MODELS[args.model]
     
