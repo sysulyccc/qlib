@@ -56,3 +56,4 @@ tags
 *.parquet
 *.pdf
 *.log
+examples/benchmarks/HIST/qlib_csi300_stock2concept.npy

@@ -242,6 +242,7 @@ class GRU(Model):
         train_loss = 0
         best_score = -np.inf
         best_epoch = 0
+        best_param = copy.deepcopy(self.GRU_model.state_dict())  # Initialize best_param
         evals_result["train"] = []
         evals_result["valid"] = []
 
