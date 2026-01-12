@@ -1,0 +1,512 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[1301923:MainThread](2026-01-11 20:52:03,452) INFO - qlib.Initialization - [config.py:452] - default_conf: client.
+[1301923:MainThread](2026-01-11 20:52:03,891) INFO - qlib.Initialization - [__init__.py:82] - qlib successfully initialized based on client settings.
+[1301923:MainThread](2026-01-11 20:52:03,891) INFO - qlib.Initialization - [__init__.py:84] - data_path={'__DEFAULT_FREQ': PosixPath('/home/ethan/.qlib/qlib_data/cn_data')}
+2026-01-11 20:52:03.900 | INFO     | __main__:__init__:113 - Run directory: /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y
+2026-01-11 20:52:03.900 | INFO     | __main__:__init__:114 - Logging to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/log/lgb_360_robust_csi500_topk_20260111_205203.log
+2026-01-11 20:52:03.900 | INFO     | __main__:__init__:115 - Model name: lgb_360_robust_csi500_topk
+2026-01-11 20:52:03.902 | INFO     | __main__:run:851 - Total 9 rolling folds to train
+2026-01-11 20:52:03.902 | INFO     | __main__:train_single_fold:553 - 
+============================================================
+2026-01-11 20:52:03.902 | INFO     | __main__:train_single_fold:554 - Fold 0: train [2010-01-01, 2013-12-31], valid [2014-01-01, 2015-12-31], test [2016-01-01, 2016-12-31]
+2026-01-11 20:52:03.902 | INFO     | __main__:train_single_fold:556 - ============================================================
+2026-01-11 20:52:03.902 | INFO     | __main__:_create_dataset:231 - Initializing Alpha360...
+[1301923:MainThread](2026-01-11 20:52:31,033) INFO - qlib.timer - [log.py:127] - Time cost: 27.128s | Loading data Done
+[1301923:MainThread](2026-01-11 20:52:39,892) INFO - qlib.timer - [log.py:127] - Time cost: 8.308s | RobustZScoreNorm Done
+[1301923:MainThread](2026-01-11 20:52:44,406) INFO - qlib.timer - [log.py:127] - Time cost: 4.513s | Fillna Done
+[1301923:MainThread](2026-01-11 20:52:46,149) INFO - qlib.timer - [log.py:127] - Time cost: 0.411s | DropnaLabel Done
+[1301923:MainThread](2026-01-11 20:52:46,415) INFO - qlib.timer - [log.py:127] - Time cost: 0.264s | CSRankNorm Done
+[1301923:MainThread](2026-01-11 20:52:46,425) INFO - qlib.timer - [log.py:127] - Time cost: 15.391s | fit & process data Done
+[1301923:MainThread](2026-01-11 20:52:46,426) INFO - qlib.timer - [log.py:127] - Time cost: 42.522s | Init data Done
+2026-01-11 20:52:46.426 | INFO     | __main__:_create_dataset:237 - Label Config: (['Ref($close, -2)/Ref($close, -1) - 1'], ['LABEL0'])
+2026-01-11 20:52:46.814 | INFO     | __main__:train_single_fold:569 - Training lgb_360_robust model (GPU=0)...
+[1301923:MainThread](2026-01-11 20:55:18,169) INFO - qlib.workflow - [exp.py:258] - Experiment 528155627018642494 starts running ...
+[1301923:MainThread](2026-01-11 20:55:18,261) INFO - qlib.workflow - [recorder.py:345] - Recorder 4e9e4e9d4fcb4aaa84e523c0cd0e84f5 starts running under Experiment 528155627018642494 ...
+2026-01-11 20:55:18.398 | INFO     | __main__:train_single_fold:573 - Generating predictions...
+2026-01-11 20:55:21.092 | INFO     | __main__:train_single_fold:592 - Fold 0 Current Model Metrics:
+2026-01-11 20:55:21.092 | INFO     | __main__:train_single_fold:593 -   IC=0.0739, ICIR=0.6246, RankIC=0.0962, RankICIR=0.8462
+2026-01-11 20:55:21.092 | INFO     | __main__:train_single_fold:602 - Running backtest for current model...
+[1301923:MainThread](2026-01-11 20:55:21,099) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+ModuleNotFoundError. CatBoostModel are skipped. (optional: maybe installing CatBoostModel can fix it.)
+ModuleNotFoundError. XGBModel is skipped(optional: maybe installing xgboost can fix it).
+Training until validation scores don't improve for 50 rounds
+[20]	train's l2: 0.983291	valid's l2: 0.990716
+[40]	train's l2: 0.977512	valid's l2: 0.990645
+[60]	train's l2: 0.973063	valid's l2: 0.991543
+Early stopping, best iteration is:
+[27]	train's l2: 0.980954	valid's l2: 0.990355
+[1301923:MainThread](2026-01-11 20:55:50,486) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 20:55:50,487) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 20:55:55,735) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7ff14c95fc10>
+backtest loop:   0%|          | 0/244 [00:00<?, ?it/s]backtest loop:   4%|▍         | 10/244 [00:00<00:02, 86.50it/s]backtest loop:   8%|▊         | 20/244 [00:00<00:02, 88.96it/s]backtest loop:  12%|█▏        | 30/244 [00:00<00:02, 87.80it/s]backtest loop:  16%|█▋        | 40/244 [00:00<00:02, 91.52it/s]backtest loop:  20%|██        | 50/244 [00:00<00:02, 93.89it/s]backtest loop:  25%|██▍       | 60/244 [00:00<00:01, 92.77it/s]backtest loop:  29%|██▊       | 70/244 [00:00<00:01, 91.21it/s]backtest loop:  33%|███▎      | 80/244 [00:00<00:01, 92.14it/s]backtest loop:  37%|███▋      | 90/244 [00:00<00:01, 90.52it/s]backtest loop:  41%|████      | 100/244 [00:01<00:01, 91.11it/s]backtest loop:  45%|████▌     | 110/244 [00:01<00:01, 89.95it/s]backtest loop:  49%|████▉     | 120/244 [00:01<00:01, 89.28it/s]backtest loop:  53%|█████▎    | 129/244 [00:01<00:01, 87.70it/s]backtest loop:  57%|█████▋    | 139/244 [00:01<00:01, 89.95it/s]backtest loop:  61%|██████    | 149/244 [00:01<00:01, 89.40it/s]backtest loop:  65%|██████▍   | 158/244 [00:01<00:00, 88.14it/s]backtest loop:  68%|██████▊   | 167/244 [00:01<00:00, 87.68it/s]backtest loop:  72%|███████▏  | 176/244 [00:01<00:00, 86.95it/s]backtest loop:  76%|███████▌  | 185/244 [00:02<00:00, 86.90it/s]backtest loop:  80%|███████▉  | 194/244 [00:02<00:00, 87.08it/s]backtest loop:  84%|████████▎ | 204/244 [00:02<00:00, 88.99it/s]backtest loop:  88%|████████▊ | 214/244 [00:02<00:00, 91.47it/s]backtest loop:  92%|█████████▏| 224/244 [00:02<00:00, 93.81it/s]backtest loop:  96%|█████████▋| 235/244 [00:02<00:00, 97.42it/s]backtest loop: 100%|██████████| 244/244 [00:02<00:00, 90.84it/s]
+2026-01-11 20:55:58.441 | INFO     | __main__:train_single_fold:606 - Current Model Backtest: Ann.Return(w/cost)=0.3084, Sharpe(w/cost)=2.9673, MaxDD=-0.0243
+2026-01-11 20:56:02.669 | INFO     | __main__:_generate_and_save_reports:518 - Saved backtest report to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pdf/fold_0_backtest_report.pdf
+2026-01-11 20:56:24.326 | INFO     | __main__:_generate_and_save_reports:538 - Saved 5 model performance graphs
+2026-01-11 20:56:24.412 | INFO     | __main__:_save_predictions_parquet:491 - Saved predictions to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/fold_0_pred.parquet
+2026-01-11 20:56:24.445 | INFO     | __main__:train_single_fold:553 - 
+============================================================
+2026-01-11 20:56:24.445 | INFO     | __main__:train_single_fold:554 - Fold 1: train [2011-01-01, 2014-12-31], valid [2015-01-01, 2016-12-31], test [2017-01-01, 2017-12-31]
+2026-01-11 20:56:24.445 | INFO     | __main__:train_single_fold:556 - ============================================================
+2026-01-11 20:56:24.445 | INFO     | __main__:_create_dataset:231 - Initializing Alpha360...
+[1301923:MainThread](2026-01-11 20:57:39,510) INFO - qlib.timer - [log.py:127] - Time cost: 75.063s | Loading data Done
+[1301923:MainThread](2026-01-11 20:57:48,671) INFO - qlib.timer - [log.py:127] - Time cost: 8.618s | RobustZScoreNorm Done
+[1301923:MainThread](2026-01-11 20:57:51,513) INFO - qlib.timer - [log.py:127] - Time cost: 2.842s | Fillna Done
+[1301923:MainThread](2026-01-11 20:57:52,491) INFO - qlib.timer - [log.py:127] - Time cost: 0.318s | DropnaLabel Done
+[1301923:MainThread](2026-01-11 20:57:52,691) INFO - qlib.timer - [log.py:127] - Time cost: 0.199s | CSRankNorm Done
+[1301923:MainThread](2026-01-11 20:57:52,694) INFO - qlib.timer - [log.py:127] - Time cost: 13.184s | fit & process data Done
+[1301923:MainThread](2026-01-11 20:57:52,695) INFO - qlib.timer - [log.py:127] - Time cost: 88.249s | Init data Done
+2026-01-11 20:57:52.695 | INFO     | __main__:_create_dataset:237 - Label Config: (['Ref($close, -2)/Ref($close, -1) - 1'], ['LABEL0'])
+2026-01-11 20:57:52.696 | INFO     | __main__:train_single_fold:569 - Training lgb_360_robust model (GPU=0)...
+2026-01-11 20:58:15.395 | INFO     | __main__:train_single_fold:573 - Generating predictions...
+2026-01-11 20:58:17.640 | INFO     | __main__:train_single_fold:592 - Fold 1 Current Model Metrics:
+2026-01-11 20:58:17.640 | INFO     | __main__:train_single_fold:593 -   IC=0.0455, ICIR=0.3233, RankIC=0.0679, RankICIR=0.6575
+2026-01-11 20:58:17.640 | INFO     | __main__:train_single_fold:602 - Running backtest for current model...
+[1301923:MainThread](2026-01-11 20:58:17,648) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+Training until validation scores don't improve for 50 rounds
+[20]	train's l2: 0.984614	valid's l2: 0.990218
+[40]	train's l2: 0.978967	valid's l2: 0.990901
+[60]	train's l2: 0.974472	valid's l2: 0.991756
+Early stopping, best iteration is:
+[22]	train's l2: 0.983929	valid's l2: 0.990164
+[1301923:MainThread](2026-01-11 20:58:56,419) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 20:58:56,420) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 20:59:02,639) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7ff098959ed0>
+backtest loop:   0%|          | 0/244 [00:00<?, ?it/s]backtest loop:   2%|▏         | 4/244 [00:00<00:07, 33.93it/s]backtest loop:   6%|▌         | 14/244 [00:00<00:03, 62.01it/s]backtest loop:   9%|▉         | 23/244 [00:00<00:03, 71.82it/s]backtest loop:  14%|█▎        | 33/244 [00:00<00:02, 81.19it/s]backtest loop:  17%|█▋        | 42/244 [00:00<00:02, 82.43it/s]backtest loop:  22%|██▏       | 53/244 [00:00<00:02, 89.42it/s]backtest loop:  25%|██▌       | 62/244 [00:00<00:02, 84.53it/s]backtest loop:  30%|██▉       | 72/244 [00:00<00:01, 89.00it/s]backtest loop:  33%|███▎      | 81/244 [00:00<00:01, 88.03it/s]backtest loop:  37%|███▋      | 91/244 [00:01<00:01, 90.55it/s]backtest loop:  41%|████▏     | 101/244 [00:01<00:01, 91.59it/s]backtest loop:  45%|████▌     | 111/244 [00:01<00:01, 92.66it/s]backtest loop:  50%|████▉     | 121/244 [00:01<00:01, 91.98it/s]backtest loop:  54%|█████▎    | 131/244 [00:01<00:01, 89.21it/s]backtest loop:  57%|█████▋    | 140/244 [00:01<00:01, 89.11it/s]backtest loop:  61%|██████▏   | 150/244 [00:01<00:01, 90.94it/s]backtest loop:  66%|██████▌   | 160/244 [00:01<00:00, 91.40it/s]backtest loop:  70%|██████▉   | 170/244 [00:01<00:00, 91.58it/s]backtest loop:  74%|███████▍  | 180/244 [00:02<00:00, 87.75it/s]backtest loop:  77%|███████▋  | 189/244 [00:02<00:00, 86.28it/s]backtest loop:  82%|████████▏ | 199/244 [00:02<00:00, 87.89it/s]backtest loop:  86%|████████▌ | 209/244 [00:02<00:00, 89.16it/s]backtest loop:  90%|████████▉ | 219/244 [00:02<00:00, 86.52it/s]backtest loop:  94%|█████████▍| 229/244 [00:02<00:00, 87.84it/s]backtest loop:  98%|█████████▊| 239/244 [00:02<00:00, 87.87it/s]backtest loop: 100%|██████████| 244/244 [00:02<00:00, 86.88it/s]
+2026-01-11 20:59:05.471 | INFO     | __main__:train_single_fold:606 - Current Model Backtest: Ann.Return(w/cost)=-0.0161, Sharpe(w/cost)=-0.2776, MaxDD=-0.0559
+2026-01-11 20:59:09.353 | INFO     | __main__:_generate_and_save_reports:518 - Saved backtest report to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pdf/fold_1_backtest_report.pdf
+2026-01-11 20:59:26.085 | INFO     | __main__:_generate_and_save_reports:538 - Saved 5 model performance graphs
+2026-01-11 20:59:26.171 | INFO     | __main__:_save_predictions_parquet:491 - Saved predictions to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/fold_1_pred.parquet
+2026-01-11 20:59:26.184 | INFO     | __main__:train_single_fold:637 - 
+--- Ensemble with 1 historical models ---
+2026-01-11 20:59:26.184 | INFO     | __main__:_generate_historical_predictions:412 - 
+--- Evaluating 1 historical models on fold 1 test data ---
+2026-01-11 20:59:28.995 | INFO     | __main__:_generate_historical_predictions:431 -   Model M0 on T1: RankIC=0.0697
+2026-01-11 20:59:29.324 | INFO     | __main__:train_single_fold:647 - Ensemble Metrics: IC=0.0491, ICIR=0.3508, RankIC=0.0704
+[1301923:MainThread](2026-01-11 20:59:29,327) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+[1301923:MainThread](2026-01-11 21:00:06,032) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:00:06,034) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:00:11,899) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7ff099ab6ad0>
+backtest loop:   0%|          | 0/244 [00:00<?, ?it/s]backtest loop:   2%|▏         | 4/244 [00:00<00:06, 36.76it/s]backtest loop:   6%|▌         | 14/244 [00:00<00:03, 67.14it/s]backtest loop:   9%|▉         | 22/244 [00:00<00:03, 71.56it/s]backtest loop:  13%|█▎        | 31/244 [00:00<00:02, 76.65it/s]backtest loop:  17%|█▋        | 41/244 [00:00<00:02, 82.97it/s]backtest loop:  21%|██        | 51/244 [00:00<00:02, 87.69it/s]backtest loop:  25%|██▌       | 61/244 [00:00<00:02, 91.13it/s]backtest loop:  29%|██▉       | 71/244 [00:00<00:01, 92.78it/s]backtest loop:  33%|███▎      | 81/244 [00:00<00:01, 88.99it/s]backtest loop:  37%|███▋      | 91/244 [00:01<00:01, 89.65it/s]backtest loop:  41%|████▏     | 101/244 [00:01<00:01, 91.76it/s]backtest loop:  45%|████▌     | 111/244 [00:01<00:01, 91.13it/s]backtest loop:  50%|████▉     | 121/244 [00:01<00:01, 90.92it/s]backtest loop:  54%|█████▎    | 131/244 [00:01<00:01, 90.54it/s]backtest loop:  58%|█████▊    | 141/244 [00:01<00:01, 91.27it/s]backtest loop:  62%|██████▏   | 151/244 [00:01<00:01, 88.81it/s]backtest loop:  66%|██████▌   | 160/244 [00:01<00:00, 88.64it/s]backtest loop:  69%|██████▉   | 169/244 [00:01<00:00, 88.66it/s]backtest loop:  73%|███████▎  | 179/244 [00:02<00:00, 89.25it/s]backtest loop:  77%|███████▋  | 189/244 [00:02<00:00, 90.34it/s]backtest loop:  82%|████████▏ | 199/244 [00:02<00:00, 90.84it/s]backtest loop:  86%|████████▌ | 209/244 [00:02<00:00, 90.42it/s]backtest loop:  90%|████████▉ | 219/244 [00:02<00:00, 92.12it/s]backtest loop:  94%|█████████▍| 229/244 [00:02<00:00, 92.32it/s]backtest loop:  98%|█████████▊| 239/244 [00:02<00:00, 94.38it/s]backtest loop: 100%|██████████| 244/244 [00:02<00:00, 88.85it/s]
+2026-01-11 21:00:14.668 | INFO     | __main__:train_single_fold:654 - Ensemble Backtest: Ann.Return(w/cost)=0.0718, Sharpe(w/cost)=1.1591
+2026-01-11 21:00:14.723 | INFO     | __main__:train_single_fold:553 - 
+============================================================
+2026-01-11 21:00:14.723 | INFO     | __main__:train_single_fold:554 - Fold 2: train [2012-01-01, 2015-12-31], valid [2016-01-01, 2017-12-31], test [2018-01-01, 2018-12-31]
+2026-01-11 21:00:14.723 | INFO     | __main__:train_single_fold:556 - ============================================================
+2026-01-11 21:00:14.723 | INFO     | __main__:_create_dataset:231 - Initializing Alpha360...
+[1301923:MainThread](2026-01-11 21:01:41,640) INFO - qlib.timer - [log.py:127] - Time cost: 86.914s | Loading data Done
+[1301923:MainThread](2026-01-11 21:01:50,685) INFO - qlib.timer - [log.py:127] - Time cost: 8.484s | RobustZScoreNorm Done
+[1301923:MainThread](2026-01-11 21:01:53,380) INFO - qlib.timer - [log.py:127] - Time cost: 2.694s | Fillna Done
+[1301923:MainThread](2026-01-11 21:01:54,283) INFO - qlib.timer - [log.py:127] - Time cost: 0.311s | DropnaLabel Done
+[1301923:MainThread](2026-01-11 21:01:54,487) INFO - qlib.timer - [log.py:127] - Time cost: 0.203s | CSRankNorm Done
+[1301923:MainThread](2026-01-11 21:01:54,490) INFO - qlib.timer - [log.py:127] - Time cost: 12.849s | fit & process data Done
+[1301923:MainThread](2026-01-11 21:01:54,490) INFO - qlib.timer - [log.py:127] - Time cost: 99.766s | Init data Done
+2026-01-11 21:01:54.491 | INFO     | __main__:_create_dataset:237 - Label Config: (['Ref($close, -2)/Ref($close, -1) - 1'], ['LABEL0'])
+2026-01-11 21:01:54.491 | INFO     | __main__:train_single_fold:569 - Training lgb_360_robust model (GPU=0)...
+2026-01-11 21:02:28.383 | INFO     | __main__:train_single_fold:573 - Generating predictions...
+2026-01-11 21:02:30.747 | INFO     | __main__:train_single_fold:592 - Fold 2 Current Model Metrics:
+2026-01-11 21:02:30.747 | INFO     | __main__:train_single_fold:593 -   IC=0.0540, ICIR=0.4650, RankIC=0.0392, RankICIR=0.4012
+2026-01-11 21:02:30.747 | INFO     | __main__:train_single_fold:602 - Running backtest for current model...
+[1301923:MainThread](2026-01-11 21:02:30,755) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+Training until validation scores don't improve for 50 rounds
+[20]	train's l2: 0.983209	valid's l2: 0.991829
+[40]	train's l2: 0.976905	valid's l2: 0.990875
+[60]	train's l2: 0.97208	valid's l2: 0.990675
+[80]	train's l2: 0.967745	valid's l2: 0.990688
+[100]	train's l2: 0.963495	valid's l2: 0.990839
+Early stopping, best iteration is:
+[63]	train's l2: 0.971387	valid's l2: 0.990645
+[1301923:MainThread](2026-01-11 21:03:14,678) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:03:14,679) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:03:21,327) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7ff098e35410>
+backtest loop:   0%|          | 0/243 [00:00<?, ?it/s]backtest loop:   2%|▏         | 4/243 [00:00<00:06, 34.59it/s]backtest loop:   6%|▌         | 14/243 [00:00<00:03, 62.88it/s]backtest loop:  10%|▉         | 24/243 [00:00<00:02, 73.73it/s]backtest loop:  13%|█▎        | 32/243 [00:00<00:02, 72.48it/s]backtest loop:  16%|█▋        | 40/243 [00:00<00:02, 73.50it/s]backtest loop:  20%|██        | 49/243 [00:00<00:02, 75.05it/s]backtest loop:  24%|██▍       | 59/243 [00:00<00:02, 77.78it/s]backtest loop:  28%|██▊       | 67/243 [00:00<00:02, 77.41it/s]backtest loop:  32%|███▏      | 77/243 [00:01<00:02, 80.82it/s]backtest loop:  35%|███▌      | 86/243 [00:01<00:01, 80.61it/s]backtest loop:  39%|███▉      | 95/243 [00:01<00:01, 79.80it/s]backtest loop:  43%|████▎     | 105/243 [00:01<00:01, 82.43it/s]backtest loop:  47%|████▋     | 115/243 [00:01<00:01, 86.84it/s]backtest loop:  51%|█████     | 124/243 [00:01<00:01, 87.47it/s]backtest loop:  55%|█████▌    | 134/243 [00:01<00:01, 90.20it/s]backtest loop:  60%|██████    | 146/243 [00:01<00:00, 97.84it/s]backtest loop:  65%|██████▍   | 157/243 [00:01<00:00, 100.40it/s]backtest loop:  69%|██████▉   | 168/243 [00:01<00:00, 103.13it/s]backtest loop:  74%|███████▎  | 179/243 [00:02<00:00, 102.59it/s]backtest loop:  79%|███████▊  | 191/243 [00:02<00:00, 107.53it/s]backtest loop:  84%|████████▎ | 203/243 [00:02<00:00, 106.50it/s]backtest loop:  88%|████████▊ | 214/243 [00:02<00:00, 106.03it/s]backtest loop:  93%|█████████▎| 225/243 [00:02<00:00, 104.97it/s]backtest loop:  97%|█████████▋| 236/243 [00:02<00:00, 103.71it/s]backtest loop: 100%|██████████| 243/243 [00:02<00:00, 89.83it/s] 
+2026-01-11 21:03:24.052 | INFO     | __main__:train_single_fold:606 - Current Model Backtest: Ann.Return(w/cost)=0.0379, Sharpe(w/cost)=0.5503, MaxDD=-0.0347
+2026-01-11 21:03:28.133 | INFO     | __main__:_generate_and_save_reports:518 - Saved backtest report to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pdf/fold_2_backtest_report.pdf
+2026-01-11 21:03:45.865 | INFO     | __main__:_generate_and_save_reports:538 - Saved 5 model performance graphs
+2026-01-11 21:03:45.969 | INFO     | __main__:_save_predictions_parquet:491 - Saved predictions to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/fold_2_pred.parquet
+2026-01-11 21:03:45.988 | INFO     | __main__:train_single_fold:637 - 
+--- Ensemble with 2 historical models ---
+2026-01-11 21:03:45.988 | INFO     | __main__:_generate_historical_predictions:412 - 
+--- Evaluating 2 historical models on fold 2 test data ---
+2026-01-11 21:03:52.772 | INFO     | __main__:_generate_historical_predictions:431 -   Model M0 on T2: RankIC=0.0400
+2026-01-11 21:03:54.491 | INFO     | __main__:_generate_historical_predictions:431 -   Model M1 on T2: RankIC=0.0388
+2026-01-11 21:03:54.867 | INFO     | __main__:train_single_fold:647 - Ensemble Metrics: IC=0.0534, ICIR=0.4508, RankIC=0.0411
+[1301923:MainThread](2026-01-11 21:03:54,880) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+[1301923:MainThread](2026-01-11 21:04:52,472) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:04:52,474) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:04:59,089) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7fef34206ad0>
+backtest loop:   0%|          | 0/243 [00:00<?, ?it/s]backtest loop:   2%|▏         | 4/243 [00:00<00:06, 35.12it/s]backtest loop:   6%|▌         | 14/243 [00:00<00:03, 62.57it/s]backtest loop:  10%|▉         | 24/243 [00:00<00:03, 72.30it/s]backtest loop:  13%|█▎        | 32/243 [00:00<00:02, 71.18it/s]backtest loop:  16%|█▋        | 40/243 [00:00<00:02, 72.87it/s]backtest loop:  20%|██        | 49/243 [00:00<00:02, 75.18it/s]backtest loop:  24%|██▍       | 59/243 [00:00<00:02, 77.32it/s]backtest loop:  28%|██▊       | 67/243 [00:00<00:02, 75.46it/s]backtest loop:  32%|███▏      | 77/243 [00:01<00:02, 79.32it/s]backtest loop:  35%|███▍      | 85/243 [00:01<00:02, 78.48it/s]backtest loop:  39%|███▉      | 95/243 [00:01<00:01, 81.98it/s]backtest loop:  43%|████▎     | 105/243 [00:01<00:01, 85.23it/s]backtest loop:  47%|████▋     | 115/243 [00:01<00:01, 89.31it/s]backtest loop:  51%|█████▏    | 125/243 [00:01<00:01, 90.82it/s]backtest loop:  56%|█████▌    | 135/243 [00:01<00:01, 92.51it/s]backtest loop:  60%|█████▉    | 145/243 [00:01<00:01, 93.52it/s]backtest loop:  64%|██████▍   | 155/243 [00:01<00:00, 94.46it/s]backtest loop:  68%|██████▊   | 165/243 [00:01<00:00, 94.54it/s]backtest loop:  72%|███████▏  | 175/243 [00:02<00:00, 95.05it/s]backtest loop:  76%|███████▌  | 185/243 [00:02<00:00, 94.41it/s]backtest loop:  80%|████████  | 195/243 [00:02<00:00, 95.08it/s]backtest loop:  84%|████████▍ | 205/243 [00:02<00:00, 92.32it/s]backtest loop:  88%|████████▊ | 215/243 [00:02<00:00, 88.18it/s]backtest loop:  92%|█████████▏| 224/243 [00:02<00:00, 86.03it/s]backtest loop:  96%|█████████▌| 233/243 [00:02<00:00, 82.42it/s]backtest loop: 100%|██████████| 243/243 [00:02<00:00, 81.73it/s]backtest loop: 100%|██████████| 243/243 [00:02<00:00, 83.82it/s]
+2026-01-11 21:05:02.013 | INFO     | __main__:train_single_fold:654 - Ensemble Backtest: Ann.Return(w/cost)=-0.0251, Sharpe(w/cost)=-0.3670
+2026-01-11 21:05:02.089 | INFO     | __main__:train_single_fold:553 - 
+============================================================
+2026-01-11 21:05:02.089 | INFO     | __main__:train_single_fold:554 - Fold 3: train [2013-01-01, 2016-12-31], valid [2017-01-01, 2018-12-31], test [2019-01-01, 2019-12-31]
+2026-01-11 21:05:02.089 | INFO     | __main__:train_single_fold:556 - ============================================================
+2026-01-11 21:05:02.089 | INFO     | __main__:_create_dataset:231 - Initializing Alpha360...
+[1301923:MainThread](2026-01-11 21:06:53,748) INFO - qlib.timer - [log.py:127] - Time cost: 111.656s | Loading data Done
+[1301923:MainThread](2026-01-11 21:07:05,160) INFO - qlib.timer - [log.py:127] - Time cost: 10.865s | RobustZScoreNorm Done
+[1301923:MainThread](2026-01-11 21:07:07,643) INFO - qlib.timer - [log.py:127] - Time cost: 2.482s | Fillna Done
+[1301923:MainThread](2026-01-11 21:07:08,617) INFO - qlib.timer - [log.py:127] - Time cost: 0.288s | DropnaLabel Done
+[1301923:MainThread](2026-01-11 21:07:08,804) INFO - qlib.timer - [log.py:127] - Time cost: 0.186s | CSRankNorm Done
+[1301923:MainThread](2026-01-11 21:07:08,808) INFO - qlib.timer - [log.py:127] - Time cost: 15.059s | fit & process data Done
+[1301923:MainThread](2026-01-11 21:07:08,808) INFO - qlib.timer - [log.py:127] - Time cost: 126.718s | Init data Done
+2026-01-11 21:07:08.809 | INFO     | __main__:_create_dataset:237 - Label Config: (['Ref($close, -2)/Ref($close, -1) - 1'], ['LABEL0'])
+2026-01-11 21:07:08.810 | INFO     | __main__:train_single_fold:569 - Training lgb_360_robust model (GPU=0)...
+2026-01-11 21:07:15.578 | INFO     | __main__:train_single_fold:573 - Generating predictions...
+2026-01-11 21:07:16.732 | INFO     | __main__:train_single_fold:592 - Fold 3 Current Model Metrics:
+2026-01-11 21:07:16.732 | INFO     | __main__:train_single_fold:593 -   IC=0.0284, ICIR=0.2460, RankIC=0.0388, RankICIR=0.3878
+2026-01-11 21:07:16.732 | INFO     | __main__:train_single_fold:602 - Running backtest for current model...
+[1301923:MainThread](2026-01-11 21:07:16,741) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+Training until validation scores don't improve for 50 rounds
+[20]	train's l2: 0.983172	valid's l2: 0.994776
+[40]	train's l2: 0.97661	valid's l2: 0.994581
+[60]	train's l2: 0.971662	valid's l2: 0.994432
+[80]	train's l2: 0.967114	valid's l2: 0.994341
+[100]	train's l2: 0.962792	valid's l2: 0.994336
+[120]	train's l2: 0.958506	valid's l2: 0.994315
+[140]	train's l2: 0.954471	valid's l2: 0.994289
+[160]	train's l2: 0.950534	valid's l2: 0.994568
+[180]	train's l2: 0.946617	valid's l2: 0.994725
+Early stopping, best iteration is:
+[132]	train's l2: 0.956146	valid's l2: 0.994273
+[1301923:MainThread](2026-01-11 21:08:02,240) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:08:02,241) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:08:08,719) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7ff12ff59ed0>
+backtest loop:   0%|          | 0/244 [00:00<?, ?it/s]backtest loop:   1%|          | 3/244 [00:00<00:08, 26.90it/s]backtest loop:   5%|▌         | 13/244 [00:00<00:03, 60.11it/s]backtest loop:   9%|▉         | 23/244 [00:00<00:03, 70.00it/s]backtest loop:  14%|█▎        | 33/244 [00:00<00:02, 74.91it/s]backtest loop:  18%|█▊        | 43/244 [00:00<00:02, 78.65it/s]backtest loop:  22%|██▏       | 53/244 [00:00<00:02, 79.86it/s]backtest loop:  25%|██▌       | 62/244 [00:00<00:02, 78.48it/s]backtest loop:  30%|██▉       | 72/244 [00:00<00:02, 80.04it/s]backtest loop:  33%|███▎      | 80/244 [00:01<00:02, 79.59it/s]backtest loop:  36%|███▋      | 89/244 [00:01<00:01, 79.41it/s]backtest loop:  41%|████      | 99/244 [00:01<00:01, 80.19it/s]backtest loop:  44%|████▍     | 108/244 [00:01<00:01, 80.21it/s]backtest loop:  48%|████▊     | 118/244 [00:01<00:01, 81.34it/s]backtest loop:  52%|█████▏    | 128/244 [00:01<00:01, 81.48it/s]backtest loop:  57%|█████▋    | 138/244 [00:01<00:01, 81.45it/s]backtest loop:  61%|██████    | 148/244 [00:01<00:01, 81.33it/s]backtest loop:  65%|██████▍   | 158/244 [00:02<00:01, 81.80it/s]backtest loop:  69%|██████▉   | 168/244 [00:02<00:00, 81.76it/s]backtest loop:  73%|███████▎  | 177/244 [00:02<00:00, 80.44it/s]backtest loop:  76%|███████▌  | 186/244 [00:02<00:00, 79.62it/s]backtest loop:  80%|███████▉  | 194/244 [00:02<00:00, 75.20it/s]backtest loop:  83%|████████▎ | 202/244 [00:02<00:00, 75.06it/s]backtest loop:  87%|████████▋ | 212/244 [00:02<00:00, 76.57it/s]backtest loop:  90%|█████████ | 220/244 [00:02<00:00, 75.96it/s]backtest loop:  93%|█████████▎| 228/244 [00:02<00:00, 75.60it/s]backtest loop:  97%|█████████▋| 237/244 [00:03<00:00, 76.22it/s]backtest loop: 100%|██████████| 244/244 [00:03<00:00, 77.38it/s]
+2026-01-11 21:08:11.897 | INFO     | __main__:train_single_fold:606 - Current Model Backtest: Ann.Return(w/cost)=-0.0134, Sharpe(w/cost)=-0.1932, MaxDD=-0.0798
+2026-01-11 21:08:15.177 | INFO     | __main__:_generate_and_save_reports:518 - Saved backtest report to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pdf/fold_3_backtest_report.pdf
+2026-01-11 21:08:31.898 | INFO     | __main__:_generate_and_save_reports:538 - Saved 5 model performance graphs
+2026-01-11 21:08:31.987 | INFO     | __main__:_save_predictions_parquet:491 - Saved predictions to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/fold_3_pred.parquet
+2026-01-11 21:08:32.006 | INFO     | __main__:train_single_fold:637 - 
+--- Ensemble with 3 historical models ---
+2026-01-11 21:08:32.006 | INFO     | __main__:_generate_historical_predictions:412 - 
+--- Evaluating 3 historical models on fold 3 test data ---
+2026-01-11 21:08:34.734 | INFO     | __main__:_generate_historical_predictions:431 -   Model M0 on T3: RankIC=0.0367
+2026-01-11 21:08:36.639 | INFO     | __main__:_generate_historical_predictions:431 -   Model M1 on T3: RankIC=0.0347
+2026-01-11 21:08:38.720 | INFO     | __main__:_generate_historical_predictions:431 -   Model M2 on T3: RankIC=0.0323
+2026-01-11 21:08:39.075 | INFO     | __main__:train_single_fold:647 - Ensemble Metrics: IC=0.0282, ICIR=0.2351, RankIC=0.0396
+[1301923:MainThread](2026-01-11 21:08:39,079) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+[1301923:MainThread](2026-01-11 21:09:27,963) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:09:27,964) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:09:34,810) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7ff14c10ead0>
+backtest loop:   0%|          | 0/244 [00:00<?, ?it/s]backtest loop:   1%|          | 3/244 [00:00<00:09, 26.01it/s]backtest loop:   5%|▌         | 13/244 [00:00<00:03, 58.62it/s]backtest loop:   9%|▉         | 23/244 [00:00<00:03, 69.27it/s]backtest loop:  14%|█▎        | 33/244 [00:00<00:02, 74.58it/s]backtest loop:  18%|█▊        | 43/244 [00:00<00:02, 77.04it/s]backtest loop:  22%|██▏       | 53/244 [00:00<00:02, 78.12it/s]backtest loop:  25%|██▌       | 62/244 [00:00<00:02, 78.67it/s]backtest loop:  30%|██▉       | 72/244 [00:00<00:02, 79.78it/s]backtest loop:  33%|███▎      | 80/244 [00:01<00:02, 79.00it/s]backtest loop:  36%|███▋      | 89/244 [00:01<00:01, 78.66it/s]backtest loop:  40%|████      | 98/244 [00:01<00:01, 80.60it/s]backtest loop:  44%|████▍     | 107/244 [00:01<00:01, 80.05it/s]backtest loop:  48%|████▊     | 116/244 [00:01<00:01, 80.43it/s]backtest loop:  51%|█████     | 125/244 [00:01<00:01, 80.07it/s]backtest loop:  55%|█████▍    | 134/244 [00:01<00:01, 79.57it/s]backtest loop:  59%|█████▊    | 143/244 [00:01<00:01, 79.11it/s]backtest loop:  63%|██████▎   | 153/244 [00:01<00:01, 79.58it/s]backtest loop:  67%|██████▋   | 163/244 [00:02<00:01, 80.53it/s]backtest loop:  70%|███████   | 172/244 [00:02<00:00, 80.32it/s]backtest loop:  75%|███████▍  | 182/244 [00:02<00:00, 80.37it/s]backtest loop:  78%|███████▊  | 191/244 [00:02<00:00, 80.47it/s]backtest loop:  82%|████████▏ | 200/244 [00:02<00:00, 80.22it/s]backtest loop:  86%|████████▌ | 209/244 [00:02<00:00, 79.71it/s]backtest loop:  89%|████████▉ | 217/244 [00:02<00:00, 78.44it/s]backtest loop:  93%|█████████▎| 227/244 [00:02<00:00, 80.02it/s]backtest loop:  97%|█████████▋| 237/244 [00:03<00:00, 80.35it/s]backtest loop: 100%|██████████| 244/244 [00:03<00:00, 77.98it/s]
+2026-01-11 21:09:37.959 | INFO     | __main__:train_single_fold:654 - Ensemble Backtest: Ann.Return(w/cost)=-0.0640, Sharpe(w/cost)=-0.8957
+2026-01-11 21:09:38.040 | INFO     | __main__:train_single_fold:553 - 
+============================================================
+2026-01-11 21:09:38.041 | INFO     | __main__:train_single_fold:554 - Fold 4: train [2014-01-01, 2017-12-31], valid [2018-01-01, 2019-12-31], test [2020-01-01, 2020-12-31]
+2026-01-11 21:09:38.041 | INFO     | __main__:train_single_fold:556 - ============================================================
+2026-01-11 21:09:38.041 | INFO     | __main__:_create_dataset:231 - Initializing Alpha360...
+[1301923:MainThread](2026-01-11 21:11:23,462) INFO - qlib.timer - [log.py:127] - Time cost: 105.419s | Loading data Done
+[1301923:MainThread](2026-01-11 21:11:33,329) INFO - qlib.timer - [log.py:127] - Time cost: 9.323s | RobustZScoreNorm Done
+[1301923:MainThread](2026-01-11 21:11:35,855) INFO - qlib.timer - [log.py:127] - Time cost: 2.525s | Fillna Done
+[1301923:MainThread](2026-01-11 21:11:36,719) INFO - qlib.timer - [log.py:127] - Time cost: 0.323s | DropnaLabel Done
+[1301923:MainThread](2026-01-11 21:11:36,923) INFO - qlib.timer - [log.py:127] - Time cost: 0.203s | CSRankNorm Done
+[1301923:MainThread](2026-01-11 21:11:36,927) INFO - qlib.timer - [log.py:127] - Time cost: 13.464s | fit & process data Done
+[1301923:MainThread](2026-01-11 21:11:36,927) INFO - qlib.timer - [log.py:127] - Time cost: 118.885s | Init data Done
+2026-01-11 21:11:36.928 | INFO     | __main__:_create_dataset:237 - Label Config: (['Ref($close, -2)/Ref($close, -1) - 1'], ['LABEL0'])
+2026-01-11 21:11:36.928 | INFO     | __main__:train_single_fold:569 - Training lgb_360_robust model (GPU=0)...
+2026-01-11 21:12:23.638 | INFO     | __main__:train_single_fold:573 - Generating predictions...
+2026-01-11 21:12:25.796 | INFO     | __main__:train_single_fold:592 - Fold 4 Current Model Metrics:
+2026-01-11 21:12:25.797 | INFO     | __main__:train_single_fold:593 -   IC=0.0195, ICIR=0.1347, RankIC=0.0404, RankICIR=0.3098
+2026-01-11 21:12:25.797 | INFO     | __main__:train_single_fold:602 - Running backtest for current model...
+[1301923:MainThread](2026-01-11 21:12:25,804) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+Training until validation scores don't improve for 50 rounds
+[20]	train's l2: 0.984269	valid's l2: 0.996004
+[40]	train's l2: 0.977976	valid's l2: 0.996155
+[60]	train's l2: 0.97293	valid's l2: 0.996141
+Early stopping, best iteration is:
+[24]	train's l2: 0.982828	valid's l2: 0.995884
+[1301923:MainThread](2026-01-11 21:13:14,002) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:13:14,003) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:13:20,630) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7ff14c37ead0>
+backtest loop:   0%|          | 0/243 [00:00<?, ?it/s]backtest loop:   1%|          | 3/243 [00:00<00:08, 27.04it/s]backtest loop:   5%|▍         | 12/243 [00:00<00:04, 55.93it/s]backtest loop:   9%|▊         | 21/243 [00:00<00:03, 67.59it/s]backtest loop:  13%|█▎        | 31/243 [00:00<00:02, 73.94it/s]backtest loop:  17%|█▋        | 41/243 [00:00<00:02, 77.58it/s]backtest loop:  21%|██        | 51/243 [00:00<00:02, 81.01it/s]backtest loop:  25%|██▌       | 61/243 [00:00<00:02, 81.76it/s]backtest loop:  29%|██▉       | 70/243 [00:00<00:02, 79.59it/s]backtest loop:  33%|███▎      | 79/243 [00:01<00:02, 80.08it/s]backtest loop:  36%|███▌      | 88/243 [00:01<00:01, 79.90it/s]backtest loop:  40%|███▉      | 97/243 [00:01<00:01, 79.80it/s]backtest loop:  44%|████▍     | 107/243 [00:01<00:01, 80.84it/s]backtest loop:  48%|████▊     | 116/243 [00:01<00:01, 80.55it/s]backtest loop:  51%|█████▏    | 125/243 [00:01<00:01, 80.41it/s]backtest loop:  56%|█████▌    | 135/243 [00:01<00:01, 81.03it/s]backtest loop:  60%|█████▉    | 145/243 [00:01<00:01, 81.46it/s]backtest loop:  64%|██████▍   | 155/243 [00:01<00:01, 82.18it/s]backtest loop:  68%|██████▊   | 165/243 [00:02<00:00, 82.64it/s]backtest loop:  72%|███████▏  | 175/243 [00:02<00:00, 82.74it/s]backtest loop:  76%|███████▌  | 184/243 [00:02<00:00, 78.53it/s]backtest loop:  80%|███████▉  | 194/243 [00:02<00:00, 79.66it/s]backtest loop:  84%|████████▍ | 204/243 [00:02<00:00, 80.42it/s]backtest loop:  88%|████████▊ | 214/243 [00:02<00:00, 81.30it/s]backtest loop:  92%|█████████▏| 224/243 [00:02<00:00, 81.27it/s]backtest loop:  96%|█████████▋| 234/243 [00:02<00:00, 81.89it/s]backtest loop: 100%|██████████| 243/243 [00:03<00:00, 81.35it/s]backtest loop: 100%|██████████| 243/243 [00:03<00:00, 79.23it/s]
+2026-01-11 21:13:23.716 | INFO     | __main__:train_single_fold:606 - Current Model Backtest: Ann.Return(w/cost)=-0.0588, Sharpe(w/cost)=-0.7288, MaxDD=-0.1200
+2026-01-11 21:13:29.949 | INFO     | __main__:_generate_and_save_reports:518 - Saved backtest report to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pdf/fold_4_backtest_report.pdf
+2026-01-11 21:13:48.651 | INFO     | __main__:_generate_and_save_reports:538 - Saved 5 model performance graphs
+2026-01-11 21:13:48.745 | INFO     | __main__:_save_predictions_parquet:491 - Saved predictions to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/fold_4_pred.parquet
+2026-01-11 21:13:48.766 | INFO     | __main__:train_single_fold:637 - 
+--- Ensemble with 4 historical models ---
+2026-01-11 21:13:48.766 | INFO     | __main__:_generate_historical_predictions:412 - 
+--- Evaluating 4 historical models on fold 4 test data ---
+2026-01-11 21:13:51.482 | INFO     | __main__:_generate_historical_predictions:431 -   Model M0 on T4: RankIC=0.0338
+2026-01-11 21:13:52.962 | INFO     | __main__:_generate_historical_predictions:431 -   Model M1 on T4: RankIC=0.0338
+2026-01-11 21:13:54.448 | INFO     | __main__:_generate_historical_predictions:431 -   Model M2 on T4: RankIC=0.0399
+2026-01-11 21:13:55.989 | INFO     | __main__:_generate_historical_predictions:431 -   Model M3 on T4: RankIC=0.0389
+2026-01-11 21:13:56.362 | INFO     | __main__:train_single_fold:647 - Ensemble Metrics: IC=0.0190, ICIR=0.1280, RankIC=0.0411
+[1301923:MainThread](2026-01-11 21:13:56,366) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+[1301923:MainThread](2026-01-11 21:14:43,748) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:14:43,749) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:14:50,969) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7fef16096ad0>
+backtest loop:   0%|          | 0/243 [00:00<?, ?it/s]backtest loop:   1%|          | 3/243 [00:00<00:08, 29.17it/s]backtest loop:   5%|▍         | 12/243 [00:00<00:03, 59.12it/s]backtest loop:   9%|▊         | 21/243 [00:00<00:03, 68.62it/s]backtest loop:  13%|█▎        | 31/243 [00:00<00:02, 74.03it/s]backtest loop:  17%|█▋        | 41/243 [00:00<00:02, 76.72it/s]backtest loop:  21%|██        | 51/243 [00:00<00:02, 79.40it/s]backtest loop:  25%|██▌       | 61/243 [00:00<00:02, 80.15it/s]backtest loop:  29%|██▉       | 70/243 [00:00<00:02, 79.84it/s]backtest loop:  33%|███▎      | 79/243 [00:01<00:02, 79.50it/s]backtest loop:  36%|███▌      | 87/243 [00:01<00:01, 78.34it/s]backtest loop:  40%|███▉      | 97/243 [00:01<00:01, 79.32it/s]backtest loop:  44%|████▎     | 106/243 [00:01<00:01, 82.05it/s]backtest loop:  47%|████▋     | 115/243 [00:01<00:01, 77.26it/s]backtest loop:  51%|█████▏    | 125/243 [00:01<00:01, 78.99it/s]backtest loop:  56%|█████▌    | 135/243 [00:01<00:01, 79.41it/s]backtest loop:  60%|█████▉    | 145/243 [00:01<00:01, 79.96it/s]backtest loop:  64%|██████▍   | 155/243 [00:01<00:01, 80.36it/s]backtest loop:  67%|██████▋   | 164/243 [00:02<00:00, 82.53it/s]backtest loop:  71%|███████   | 173/243 [00:02<00:00, 81.55it/s]backtest loop:  75%|███████▍  | 182/243 [00:02<00:00, 80.24it/s]backtest loop:  79%|███████▊  | 191/243 [00:02<00:00, 76.47it/s]backtest loop:  82%|████████▏ | 199/243 [00:02<00:00, 76.36it/s]backtest loop:  86%|████████▌ | 209/243 [00:02<00:00, 78.51it/s]backtest loop:  90%|█████████ | 219/243 [00:02<00:00, 80.40it/s]backtest loop:  94%|█████████▍| 229/243 [00:02<00:00, 81.15it/s]backtest loop:  98%|█████████▊| 239/243 [00:03<00:00, 81.35it/s]backtest loop: 100%|██████████| 243/243 [00:03<00:00, 78.39it/s]
+2026-01-11 21:14:54.089 | INFO     | __main__:train_single_fold:654 - Ensemble Backtest: Ann.Return(w/cost)=-0.0181, Sharpe(w/cost)=-0.2067
+2026-01-11 21:14:54.149 | INFO     | __main__:train_single_fold:553 - 
+============================================================
+2026-01-11 21:14:54.149 | INFO     | __main__:train_single_fold:554 - Fold 5: train [2015-01-01, 2018-12-31], valid [2019-01-01, 2020-12-31], test [2021-01-01, 2021-12-31]
+2026-01-11 21:14:54.149 | INFO     | __main__:train_single_fold:556 - ============================================================
+2026-01-11 21:14:54.149 | INFO     | __main__:_create_dataset:231 - Initializing Alpha360...
+[1301923:MainThread](2026-01-11 21:16:38,320) INFO - qlib.timer - [log.py:127] - Time cost: 104.169s | Loading data Done
+[1301923:MainThread](2026-01-11 21:16:47,513) INFO - qlib.timer - [log.py:127] - Time cost: 8.625s | RobustZScoreNorm Done
+[1301923:MainThread](2026-01-11 21:16:50,416) INFO - qlib.timer - [log.py:127] - Time cost: 2.902s | Fillna Done
+[1301923:MainThread](2026-01-11 21:16:51,247) INFO - qlib.timer - [log.py:127] - Time cost: 0.322s | DropnaLabel Done
+[1301923:MainThread](2026-01-11 21:16:51,453) INFO - qlib.timer - [log.py:127] - Time cost: 0.205s | CSRankNorm Done
+[1301923:MainThread](2026-01-11 21:16:51,456) INFO - qlib.timer - [log.py:127] - Time cost: 13.135s | fit & process data Done
+[1301923:MainThread](2026-01-11 21:16:51,457) INFO - qlib.timer - [log.py:127] - Time cost: 117.306s | Init data Done
+2026-01-11 21:16:51.457 | INFO     | __main__:_create_dataset:237 - Label Config: (['Ref($close, -2)/Ref($close, -1) - 1'], ['LABEL0'])
+2026-01-11 21:16:51.458 | INFO     | __main__:train_single_fold:569 - Training lgb_360_robust model (GPU=0)...
+2026-01-11 21:18:11.797 | INFO     | __main__:train_single_fold:573 - Generating predictions...
+2026-01-11 21:18:14.007 | INFO     | __main__:train_single_fold:592 - Fold 5 Current Model Metrics:
+2026-01-11 21:18:14.007 | INFO     | __main__:train_single_fold:593 -   IC=0.0077, ICIR=0.0552, RankIC=0.0231, RankICIR=0.1831
+2026-01-11 21:18:14.007 | INFO     | __main__:train_single_fold:602 - Running backtest for current model...
+[1301923:MainThread](2026-01-11 21:18:14,014) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+Training until validation scores don't improve for 50 rounds
+[20]	train's l2: 0.985125	valid's l2: 0.995975
+[40]	train's l2: 0.978993	valid's l2: 0.996523
+[60]	train's l2: 0.973955	valid's l2: 0.996707
+Early stopping, best iteration is:
+[11]	train's l2: 0.98911	valid's l2: 0.99585
+[1301923:MainThread](2026-01-11 21:19:04,822) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:19:04,823) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:19:12,585) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7ff09a936ad0>
+backtest loop:   0%|          | 0/243 [00:00<?, ?it/s]backtest loop:   2%|▏         | 4/243 [00:00<00:06, 38.65it/s]backtest loop:   5%|▍         | 12/243 [00:00<00:03, 61.14it/s]backtest loop:   8%|▊         | 20/243 [00:00<00:03, 67.65it/s]backtest loop:  12%|█▏        | 28/243 [00:00<00:03, 71.39it/s]backtest loop:  15%|█▍        | 36/243 [00:00<00:02, 73.72it/s]backtest loop:  19%|█▊        | 45/243 [00:00<00:02, 76.22it/s]backtest loop:  23%|██▎       | 55/243 [00:00<00:02, 77.97it/s]backtest loop:  26%|██▋       | 64/243 [00:00<00:02, 78.84it/s]backtest loop:  30%|███       | 74/243 [00:00<00:02, 80.06it/s]backtest loop:  34%|███▎      | 82/243 [00:01<00:02, 79.69it/s]backtest loop:  37%|███▋      | 91/243 [00:01<00:01, 78.45it/s]backtest loop:  41%|████      | 100/243 [00:01<00:01, 81.46it/s]backtest loop:  45%|████▍     | 109/243 [00:01<00:01, 80.94it/s]backtest loop:  49%|████▊     | 118/243 [00:01<00:01, 80.42it/s]backtest loop:  52%|█████▏    | 127/243 [00:01<00:01, 79.62it/s]backtest loop:  56%|█████▌    | 135/243 [00:01<00:01, 78.64it/s]backtest loop:  60%|█████▉    | 145/243 [00:01<00:01, 79.64it/s]backtest loop:  64%|██████▍   | 155/243 [00:01<00:01, 80.82it/s]backtest loop:  68%|██████▊   | 165/243 [00:02<00:00, 80.47it/s]backtest loop:  72%|███████▏  | 175/243 [00:02<00:00, 81.20it/s]backtest loop:  76%|███████▌  | 184/243 [00:02<00:00, 77.32it/s]backtest loop:  79%|███████▉  | 193/243 [00:02<00:00, 78.48it/s]backtest loop:  84%|████████▎ | 203/243 [00:02<00:00, 79.90it/s]backtest loop:  88%|████████▊ | 213/243 [00:02<00:00, 80.80it/s]backtest loop:  91%|█████████▏| 222/243 [00:02<00:00, 82.92it/s]backtest loop:  95%|█████████▌| 231/243 [00:02<00:00, 82.52it/s]backtest loop:  99%|█████████▉| 240/243 [00:03<00:00, 81.79it/s]backtest loop: 100%|██████████| 243/243 [00:03<00:00, 78.58it/s]
+2026-01-11 21:19:15.700 | INFO     | __main__:train_single_fold:606 - Current Model Backtest: Ann.Return(w/cost)=0.0462, Sharpe(w/cost)=0.4570, MaxDD=-0.0809
+2026-01-11 21:19:19.563 | INFO     | __main__:_generate_and_save_reports:518 - Saved backtest report to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pdf/fold_5_backtest_report.pdf
+2026-01-11 21:19:36.003 | INFO     | __main__:_generate_and_save_reports:538 - Saved 5 model performance graphs
+2026-01-11 21:19:36.078 | INFO     | __main__:_save_predictions_parquet:491 - Saved predictions to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/fold_5_pred.parquet
+2026-01-11 21:19:36.101 | INFO     | __main__:train_single_fold:637 - 
+--- Ensemble with 5 historical models ---
+2026-01-11 21:19:36.102 | INFO     | __main__:_generate_historical_predictions:412 - 
+--- Evaluating 5 historical models on fold 5 test data ---
+2026-01-11 21:19:38.954 | INFO     | __main__:_generate_historical_predictions:431 -   Model M0 on T5: RankIC=0.0262
+2026-01-11 21:19:40.759 | INFO     | __main__:_generate_historical_predictions:431 -   Model M1 on T5: RankIC=0.0291
+2026-01-11 21:19:42.214 | INFO     | __main__:_generate_historical_predictions:431 -   Model M2 on T5: RankIC=0.0252
+2026-01-11 21:19:43.739 | INFO     | __main__:_generate_historical_predictions:431 -   Model M3 on T5: RankIC=0.0278
+2026-01-11 21:19:45.625 | INFO     | __main__:_generate_historical_predictions:431 -   Model M4 on T5: RankIC=0.0276
+2026-01-11 21:19:46.057 | INFO     | __main__:train_single_fold:647 - Ensemble Metrics: IC=0.0082, ICIR=0.0570, RankIC=0.0275
+[1301923:MainThread](2026-01-11 21:19:46,072) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+[1301923:MainThread](2026-01-11 21:20:33,074) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:20:33,075) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:20:40,840) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7fef15a70810>
+backtest loop:   0%|          | 0/243 [00:00<?, ?it/s]backtest loop:   1%|          | 3/243 [00:00<00:08, 28.67it/s]backtest loop:   5%|▍         | 11/243 [00:00<00:04, 56.25it/s]backtest loop:   8%|▊         | 20/243 [00:00<00:03, 67.93it/s]backtest loop:  12%|█▏        | 28/243 [00:00<00:03, 71.28it/s]backtest loop:  15%|█▍        | 36/243 [00:00<00:02, 73.86it/s]backtest loop:  19%|█▊        | 45/243 [00:00<00:02, 75.88it/s]backtest loop:  23%|██▎       | 55/243 [00:00<00:02, 77.84it/s]backtest loop:  26%|██▋       | 64/243 [00:00<00:02, 78.68it/s]backtest loop:  30%|███       | 74/243 [00:00<00:02, 79.67it/s]backtest loop:  34%|███▎      | 82/243 [00:01<00:02, 79.20it/s]backtest loop:  37%|███▋      | 91/243 [00:01<00:01, 77.56it/s]backtest loop:  42%|████▏     | 101/243 [00:01<00:01, 79.10it/s]backtest loop:  45%|████▌     | 110/243 [00:01<00:01, 79.70it/s]backtest loop:  49%|████▉     | 120/243 [00:01<00:01, 80.63it/s]backtest loop:  53%|█████▎    | 130/243 [00:01<00:01, 81.00it/s]backtest loop:  58%|█████▊    | 140/243 [00:01<00:01, 82.01it/s]backtest loop:  61%|██████▏   | 149/243 [00:01<00:01, 83.14it/s]backtest loop:  65%|██████▌   | 158/243 [00:02<00:01, 82.44it/s]backtest loop:  69%|██████▊   | 167/243 [00:02<00:00, 81.91it/s]backtest loop:  72%|███████▏  | 176/243 [00:02<00:00, 79.91it/s]backtest loop:  76%|███████▌  | 184/243 [00:02<00:00, 75.99it/s]backtest loop:  79%|███████▉  | 193/243 [00:02<00:00, 77.50it/s]backtest loop:  83%|████████▎ | 202/243 [00:02<00:00, 80.20it/s]backtest loop:  87%|████████▋ | 211/243 [00:02<00:00, 80.46it/s]backtest loop:  91%|█████████ | 220/243 [00:02<00:00, 78.34it/s]backtest loop:  94%|█████████▍| 228/243 [00:02<00:00, 75.75it/s]backtest loop:  98%|█████████▊| 238/243 [00:03<00:00, 76.09it/s]backtest loop: 100%|██████████| 243/243 [00:03<00:00, 77.27it/s]
+2026-01-11 21:20:44.008 | INFO     | __main__:train_single_fold:654 - Ensemble Backtest: Ann.Return(w/cost)=-0.0164, Sharpe(w/cost)=-0.1542
+2026-01-11 21:20:44.071 | INFO     | __main__:train_single_fold:553 - 
+============================================================
+2026-01-11 21:20:44.071 | INFO     | __main__:train_single_fold:554 - Fold 6: train [2016-01-01, 2019-12-31], valid [2020-01-01, 2021-12-31], test [2022-01-01, 2022-12-31]
+2026-01-11 21:20:44.071 | INFO     | __main__:train_single_fold:556 - ============================================================
+2026-01-11 21:20:44.072 | INFO     | __main__:_create_dataset:231 - Initializing Alpha360...
+[1301923:MainThread](2026-01-11 21:22:46,991) INFO - qlib.timer - [log.py:127] - Time cost: 122.916s | Loading data Done
+[1301923:MainThread](2026-01-11 21:22:56,915) INFO - qlib.timer - [log.py:127] - Time cost: 9.343s | RobustZScoreNorm Done
+[1301923:MainThread](2026-01-11 21:23:00,569) INFO - qlib.timer - [log.py:127] - Time cost: 3.653s | Fillna Done
+[1301923:MainThread](2026-01-11 21:23:02,057) INFO - qlib.timer - [log.py:127] - Time cost: 0.349s | DropnaLabel Done
+[1301923:MainThread](2026-01-11 21:23:02,325) INFO - qlib.timer - [log.py:127] - Time cost: 0.267s | CSRankNorm Done
+[1301923:MainThread](2026-01-11 21:23:02,328) INFO - qlib.timer - [log.py:127] - Time cost: 15.337s | fit & process data Done
+[1301923:MainThread](2026-01-11 21:23:02,329) INFO - qlib.timer - [log.py:127] - Time cost: 138.256s | Init data Done
+2026-01-11 21:23:02.329 | INFO     | __main__:_create_dataset:237 - Label Config: (['Ref($close, -2)/Ref($close, -1) - 1'], ['LABEL0'])
+2026-01-11 21:23:02.330 | INFO     | __main__:train_single_fold:569 - Training lgb_360_robust model (GPU=0)...
+2026-01-11 21:25:07.637 | INFO     | __main__:train_single_fold:573 - Generating predictions...
+2026-01-11 21:25:10.344 | INFO     | __main__:train_single_fold:592 - Fold 6 Current Model Metrics:
+2026-01-11 21:25:10.344 | INFO     | __main__:train_single_fold:593 -   IC=0.0259, ICIR=0.1989, RankIC=0.0422, RankICIR=0.3518
+2026-01-11 21:25:10.344 | INFO     | __main__:train_single_fold:602 - Running backtest for current model...
+[1301923:MainThread](2026-01-11 21:25:10,353) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+Training until validation scores don't improve for 50 rounds
+[20]	train's l2: 0.98701	valid's l2: 0.99714
+[40]	train's l2: 0.981452	valid's l2: 0.997893
+Early stopping, best iteration is:
+[8]	train's l2: 0.991813	valid's l2: 0.99635
+[1301923:MainThread](2026-01-11 21:26:05,170) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:26:05,171) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:26:13,635) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7fef341c6ad0>
+backtest loop:   0%|          | 0/242 [00:00<?, ?it/s]backtest loop:   1%|          | 3/242 [00:00<00:08, 27.71it/s]backtest loop:   4%|▍         | 10/242 [00:00<00:04, 51.71it/s]backtest loop:   8%|▊         | 19/242 [00:00<00:03, 64.72it/s]backtest loop:  12%|█▏        | 29/242 [00:00<00:02, 71.37it/s]backtest loop:  16%|█▌        | 39/242 [00:00<00:02, 74.92it/s]backtest loop:  20%|██        | 49/242 [00:00<00:02, 76.97it/s]backtest loop:  24%|██▍       | 59/242 [00:00<00:02, 78.40it/s]backtest loop:  28%|██▊       | 67/242 [00:00<00:02, 77.24it/s]backtest loop:  32%|███▏      | 77/242 [00:01<00:02, 78.44it/s]backtest loop:  35%|███▌      | 85/242 [00:01<00:02, 77.51it/s]backtest loop:  39%|███▉      | 94/242 [00:01<00:01, 77.95it/s]backtest loop:  43%|████▎     | 103/242 [00:01<00:01, 79.25it/s]backtest loop:  47%|████▋     | 113/242 [00:01<00:01, 79.61it/s]backtest loop:  51%|█████     | 123/242 [00:01<00:01, 79.74it/s]backtest loop:  55%|█████▍    | 133/242 [00:01<00:01, 79.93it/s]backtest loop:  59%|█████▉    | 143/242 [00:01<00:01, 79.87it/s]backtest loop:  63%|██████▎   | 153/242 [00:02<00:01, 80.26it/s]backtest loop:  67%|██████▋   | 163/242 [00:02<00:00, 80.29it/s]backtest loop:  71%|███████   | 172/242 [00:02<00:00, 80.06it/s]backtest loop:  75%|███████▌  | 182/242 [00:02<00:00, 80.32it/s]backtest loop:  79%|███████▉  | 192/242 [00:02<00:00, 80.31it/s]backtest loop:  83%|████████▎ | 201/242 [00:02<00:00, 81.71it/s]backtest loop:  87%|████████▋ | 210/242 [00:02<00:00, 80.82it/s]backtest loop:  90%|█████████ | 219/242 [00:02<00:00, 80.06it/s]backtest loop:  94%|█████████▍| 228/242 [00:02<00:00, 79.62it/s]backtest loop:  98%|█████████▊| 237/242 [00:03<00:00, 79.19it/s]backtest loop: 100%|██████████| 242/242 [00:03<00:00, 77.73it/s]
+2026-01-11 21:26:16.768 | INFO     | __main__:train_single_fold:606 - Current Model Backtest: Ann.Return(w/cost)=0.1078, Sharpe(w/cost)=1.3326, MaxDD=-0.0516
+2026-01-11 21:26:21.935 | INFO     | __main__:_generate_and_save_reports:518 - Saved backtest report to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pdf/fold_6_backtest_report.pdf
+2026-01-11 21:26:45.495 | INFO     | __main__:_generate_and_save_reports:538 - Saved 5 model performance graphs
+2026-01-11 21:26:45.573 | INFO     | __main__:_save_predictions_parquet:491 - Saved predictions to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/fold_6_pred.parquet
+2026-01-11 21:26:45.588 | INFO     | __main__:train_single_fold:637 - 
+--- Ensemble with 6 historical models ---
+2026-01-11 21:26:45.588 | INFO     | __main__:_generate_historical_predictions:412 - 
+--- Evaluating 6 historical models on fold 6 test data ---
+2026-01-11 21:26:47.547 | INFO     | __main__:_generate_historical_predictions:431 -   Model M0 on T6: RankIC=0.0281
+2026-01-11 21:26:48.522 | INFO     | __main__:_generate_historical_predictions:431 -   Model M1 on T6: RankIC=0.0331
+2026-01-11 21:26:49.539 | INFO     | __main__:_generate_historical_predictions:431 -   Model M2 on T6: RankIC=0.0346
+2026-01-11 21:26:51.029 | INFO     | __main__:_generate_historical_predictions:431 -   Model M3 on T6: RankIC=0.0387
+2026-01-11 21:26:52.508 | INFO     | __main__:_generate_historical_predictions:431 -   Model M4 on T6: RankIC=0.0375
+2026-01-11 21:26:54.005 | INFO     | __main__:_generate_historical_predictions:431 -   Model M5 on T6: RankIC=0.0375
+2026-01-11 21:26:54.384 | INFO     | __main__:train_single_fold:647 - Ensemble Metrics: IC=0.0273, ICIR=0.1902, RankIC=0.0426
+[1301923:MainThread](2026-01-11 21:26:54,390) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+[1301923:MainThread](2026-01-11 21:27:50,498) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:27:50,499) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:27:59,136) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7fef16459490>
+backtest loop:   0%|          | 0/242 [00:00<?, ?it/s]backtest loop:   2%|▏         | 4/242 [00:00<00:07, 31.75it/s]backtest loop:   6%|▌         | 14/242 [00:00<00:03, 60.61it/s]backtest loop:  10%|▉         | 24/242 [00:00<00:03, 70.04it/s]backtest loop:  14%|█▍        | 34/242 [00:00<00:02, 74.80it/s]backtest loop:  18%|█▊        | 44/242 [00:00<00:02, 77.26it/s]backtest loop:  22%|██▏       | 54/242 [00:00<00:02, 79.53it/s]backtest loop:  26%|██▌       | 62/242 [00:00<00:02, 78.51it/s]backtest loop:  30%|██▉       | 72/242 [00:00<00:02, 79.65it/s]backtest loop:  33%|███▎      | 80/242 [00:01<00:02, 78.70it/s]backtest loop:  37%|███▋      | 89/242 [00:01<00:01, 78.70it/s]backtest loop:  40%|████      | 98/242 [00:01<00:01, 78.03it/s]backtest loop:  45%|████▍     | 108/242 [00:01<00:01, 79.58it/s]backtest loop:  49%|████▉     | 118/242 [00:01<00:01, 80.05it/s]backtest loop:  53%|█████▎    | 128/242 [00:01<00:01, 80.44it/s]backtest loop:  57%|█████▋    | 138/242 [00:01<00:01, 79.82it/s]backtest loop:  61%|██████    | 148/242 [00:01<00:01, 82.95it/s]backtest loop:  65%|██████▌   | 158/242 [00:02<00:00, 86.57it/s]backtest loop:  69%|██████▉   | 168/242 [00:02<00:00, 87.99it/s]backtest loop:  73%|███████▎  | 177/242 [00:02<00:00, 86.55it/s]backtest loop:  77%|███████▋  | 187/242 [00:02<00:00, 84.56it/s]backtest loop:  81%|████████▏ | 197/242 [00:02<00:00, 83.33it/s]backtest loop:  86%|████████▌ | 207/242 [00:02<00:00, 82.64it/s]backtest loop:  90%|████████▉ | 217/242 [00:02<00:00, 82.04it/s]backtest loop:  94%|█████████▍| 227/242 [00:02<00:00, 82.19it/s]backtest loop:  98%|█████████▊| 237/242 [00:02<00:00, 81.62it/s]backtest loop: 100%|██████████| 242/242 [00:03<00:00, 79.93it/s]
+2026-01-11 21:28:02.184 | INFO     | __main__:train_single_fold:654 - Ensemble Backtest: Ann.Return(w/cost)=0.0960, Sharpe(w/cost)=1.0273
+2026-01-11 21:28:02.239 | INFO     | __main__:train_single_fold:553 - 
+============================================================
+2026-01-11 21:28:02.239 | INFO     | __main__:train_single_fold:554 - Fold 7: train [2017-01-01, 2020-12-31], valid [2021-01-01, 2022-12-31], test [2023-01-01, 2023-12-31]
+2026-01-11 21:28:02.239 | INFO     | __main__:train_single_fold:556 - ============================================================
+2026-01-11 21:28:02.239 | INFO     | __main__:_create_dataset:231 - Initializing Alpha360...
+[1301923:MainThread](2026-01-11 21:30:16,533) INFO - qlib.timer - [log.py:127] - Time cost: 134.292s | Loading data Done
+[1301923:MainThread](2026-01-11 21:30:26,099) INFO - qlib.timer - [log.py:127] - Time cost: 8.992s | RobustZScoreNorm Done
+[1301923:MainThread](2026-01-11 21:30:28,748) INFO - qlib.timer - [log.py:127] - Time cost: 2.648s | Fillna Done
+[1301923:MainThread](2026-01-11 21:30:29,608) INFO - qlib.timer - [log.py:127] - Time cost: 0.321s | DropnaLabel Done
+[1301923:MainThread](2026-01-11 21:30:29,818) INFO - qlib.timer - [log.py:127] - Time cost: 0.209s | CSRankNorm Done
+[1301923:MainThread](2026-01-11 21:30:29,821) INFO - qlib.timer - [log.py:127] - Time cost: 13.288s | fit & process data Done
+[1301923:MainThread](2026-01-11 21:30:29,822) INFO - qlib.timer - [log.py:127] - Time cost: 147.582s | Init data Done
+2026-01-11 21:30:29.822 | INFO     | __main__:_create_dataset:237 - Label Config: (['Ref($close, -2)/Ref($close, -1) - 1'], ['LABEL0'])
+2026-01-11 21:30:29.823 | INFO     | __main__:train_single_fold:569 - Training lgb_360_robust model (GPU=0)...
+2026-01-11 21:31:17.820 | INFO     | __main__:train_single_fold:573 - Generating predictions...
+2026-01-11 21:31:19.826 | INFO     | __main__:train_single_fold:592 - Fold 7 Current Model Metrics:
+2026-01-11 21:31:19.827 | INFO     | __main__:train_single_fold:593 -   IC=0.0095, ICIR=0.0751, RankIC=0.0339, RankICIR=0.3138
+2026-01-11 21:31:19.827 | INFO     | __main__:train_single_fold:602 - Running backtest for current model...
+[1301923:MainThread](2026-01-11 21:31:19,834) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+Training until validation scores don't improve for 50 rounds
+[20]	train's l2: 0.988643	valid's l2: 0.996052
+[40]	train's l2: 0.983508	valid's l2: 0.996235
+[60]	train's l2: 0.979003	valid's l2: 0.996533
+Early stopping, best iteration is:
+[22]	train's l2: 0.988089	valid's l2: 0.995992
+[1301923:MainThread](2026-01-11 21:32:25,080) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:32:25,081) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:32:34,059) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7fef2c6a6ad0>
+backtest loop:   0%|          | 0/242 [00:00<?, ?it/s]backtest loop:   1%|          | 3/242 [00:00<00:08, 27.61it/s]backtest loop:   5%|▍         | 11/242 [00:00<00:04, 55.53it/s]backtest loop:   8%|▊         | 19/242 [00:00<00:03, 65.51it/s]backtest loop:  12%|█▏        | 29/242 [00:00<00:02, 72.46it/s]backtest loop:  16%|█▌        | 39/242 [00:00<00:02, 76.46it/s]backtest loop:  20%|██        | 49/242 [00:00<00:02, 78.87it/s]backtest loop:  24%|██▍       | 59/242 [00:00<00:02, 79.99it/s]backtest loop:  28%|██▊       | 67/242 [00:00<00:02, 77.47it/s]backtest loop:  31%|███       | 75/242 [00:01<00:02, 77.52it/s]backtest loop:  34%|███▍      | 83/242 [00:01<00:02, 75.72it/s]backtest loop:  38%|███▊      | 91/242 [00:01<00:01, 76.44it/s]backtest loop:  41%|████▏     | 100/242 [00:01<00:01, 77.84it/s]backtest loop:  45%|████▌     | 110/242 [00:01<00:01, 79.89it/s]backtest loop:  49%|████▉     | 118/242 [00:01<00:01, 78.85it/s]backtest loop:  53%|█████▎    | 128/242 [00:01<00:01, 80.19it/s]backtest loop:  57%|█████▋    | 137/242 [00:01<00:01, 82.75it/s]backtest loop:  60%|██████    | 146/242 [00:01<00:01, 81.86it/s]backtest loop:  64%|██████▍   | 155/242 [00:02<00:01, 81.36it/s]backtest loop:  68%|██████▊   | 164/242 [00:02<00:00, 80.98it/s]backtest loop:  71%|███████▏  | 173/242 [00:02<00:00, 80.75it/s]backtest loop:  75%|███████▌  | 182/242 [00:02<00:00, 80.27it/s]backtest loop:  79%|███████▉  | 192/242 [00:02<00:00, 81.14it/s]backtest loop:  83%|████████▎ | 202/242 [00:02<00:00, 81.78it/s]backtest loop:  88%|████████▊ | 212/242 [00:02<00:00, 82.21it/s]backtest loop:  92%|█████████▏| 222/242 [00:02<00:00, 82.30it/s]backtest loop:  96%|█████████▌| 232/242 [00:02<00:00, 82.35it/s]backtest loop: 100%|██████████| 242/242 [00:03<00:00, 82.54it/s]backtest loop: 100%|██████████| 242/242 [00:03<00:00, 78.75it/s]
+2026-01-11 21:32:37.151 | INFO     | __main__:train_single_fold:606 - Current Model Backtest: Ann.Return(w/cost)=0.0455, Sharpe(w/cost)=0.7994, MaxDD=-0.0286
+2026-01-11 21:32:40.976 | INFO     | __main__:_generate_and_save_reports:518 - Saved backtest report to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pdf/fold_7_backtest_report.pdf
+2026-01-11 21:32:59.308 | INFO     | __main__:_generate_and_save_reports:538 - Saved 5 model performance graphs
+2026-01-11 21:32:59.379 | INFO     | __main__:_save_predictions_parquet:491 - Saved predictions to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/fold_7_pred.parquet
+2026-01-11 21:32:59.392 | INFO     | __main__:train_single_fold:637 - 
+--- Ensemble with 7 historical models ---
+2026-01-11 21:32:59.392 | INFO     | __main__:_generate_historical_predictions:412 - 
+--- Evaluating 7 historical models on fold 7 test data ---
+2026-01-11 21:33:01.280 | INFO     | __main__:_generate_historical_predictions:431 -   Model M0 on T7: RankIC=0.0135
+2026-01-11 21:33:02.720 | INFO     | __main__:_generate_historical_predictions:431 -   Model M1 on T7: RankIC=0.0211
+2026-01-11 21:33:04.148 | INFO     | __main__:_generate_historical_predictions:431 -   Model M2 on T7: RankIC=0.0238
+2026-01-11 21:33:05.631 | INFO     | __main__:_generate_historical_predictions:431 -   Model M3 on T7: RankIC=0.0318
+2026-01-11 21:33:07.092 | INFO     | __main__:_generate_historical_predictions:431 -   Model M4 on T7: RankIC=0.0257
+2026-01-11 21:33:08.529 | INFO     | __main__:_generate_historical_predictions:431 -   Model M5 on T7: RankIC=0.0250
+2026-01-11 21:33:09.954 | INFO     | __main__:_generate_historical_predictions:431 -   Model M6 on T7: RankIC=0.0329
+2026-01-11 21:33:10.317 | INFO     | __main__:train_single_fold:647 - Ensemble Metrics: IC=0.0114, ICIR=0.0866, RankIC=0.0332
+[1301923:MainThread](2026-01-11 21:33:10,322) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+[1301923:MainThread](2026-01-11 21:34:14,802) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:34:14,802) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:34:23,659) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7fef031e6ad0>
+backtest loop:   0%|          | 0/242 [00:00<?, ?it/s]backtest loop:   1%|          | 3/242 [00:00<00:08, 26.59it/s]backtest loop:   4%|▍         | 10/242 [00:00<00:04, 50.09it/s]backtest loop:   8%|▊         | 19/242 [00:00<00:03, 64.77it/s]backtest loop:  12%|█▏        | 29/242 [00:00<00:02, 72.38it/s]backtest loop:  16%|█▌        | 39/242 [00:00<00:02, 76.66it/s]backtest loop:  20%|██        | 49/242 [00:00<00:02, 79.06it/s]backtest loop:  24%|██▍       | 59/242 [00:00<00:02, 80.41it/s]backtest loop:  28%|██▊       | 68/242 [00:00<00:02, 76.56it/s]backtest loop:  32%|███▏      | 78/242 [00:01<00:02, 78.88it/s]backtest loop:  36%|███▌      | 86/242 [00:01<00:02, 77.90it/s]backtest loop:  39%|███▉      | 95/242 [00:01<00:01, 78.57it/s]backtest loop:  43%|████▎     | 105/242 [00:01<00:01, 79.80it/s]backtest loop:  47%|████▋     | 113/242 [00:01<00:01, 79.16it/s]backtest loop:  51%|█████     | 123/242 [00:01<00:01, 80.28it/s]backtest loop:  55%|█████▍    | 133/242 [00:01<00:01, 80.97it/s]backtest loop:  59%|█████▉    | 143/242 [00:01<00:01, 81.48it/s]backtest loop:  63%|██████▎   | 153/242 [00:01<00:01, 81.34it/s]backtest loop:  67%|██████▋   | 163/242 [00:02<00:00, 81.06it/s]backtest loop:  71%|███████▏  | 173/242 [00:02<00:00, 81.34it/s]backtest loop:  75%|███████▌  | 182/242 [00:02<00:00, 81.02it/s]backtest loop:  79%|███████▉  | 192/242 [00:02<00:00, 81.29it/s]backtest loop:  83%|████████▎ | 202/242 [00:02<00:00, 81.72it/s]backtest loop:  88%|████████▊ | 212/242 [00:02<00:00, 81.98it/s]backtest loop:  92%|█████████▏| 222/242 [00:02<00:00, 81.68it/s]backtest loop:  96%|█████████▌| 232/242 [00:02<00:00, 81.80it/s]backtest loop: 100%|██████████| 242/242 [00:03<00:00, 82.00it/s]backtest loop: 100%|██████████| 242/242 [00:03<00:00, 78.74it/s]
+2026-01-11 21:34:26.752 | INFO     | __main__:train_single_fold:654 - Ensemble Backtest: Ann.Return(w/cost)=0.0946, Sharpe(w/cost)=1.6151
+2026-01-11 21:34:26.816 | INFO     | __main__:train_single_fold:553 - 
+============================================================
+2026-01-11 21:34:26.816 | INFO     | __main__:train_single_fold:554 - Fold 8: train [2018-01-01, 2021-12-31], valid [2022-01-01, 2023-12-31], test [2024-01-01, 2024-12-31]
+2026-01-11 21:34:26.816 | INFO     | __main__:train_single_fold:556 - ============================================================
+2026-01-11 21:34:26.816 | INFO     | __main__:_create_dataset:231 - Initializing Alpha360...
+[1301923:MainThread](2026-01-11 21:36:51,296) INFO - qlib.timer - [log.py:127] - Time cost: 144.478s | Loading data Done
+[1301923:MainThread](2026-01-11 21:37:00,906) INFO - qlib.timer - [log.py:127] - Time cost: 9.029s | RobustZScoreNorm Done
+[1301923:MainThread](2026-01-11 21:37:03,661) INFO - qlib.timer - [log.py:127] - Time cost: 2.755s | Fillna Done
+[1301923:MainThread](2026-01-11 21:37:04,623) INFO - qlib.timer - [log.py:127] - Time cost: 0.340s | DropnaLabel Done
+[1301923:MainThread](2026-01-11 21:37:04,839) INFO - qlib.timer - [log.py:127] - Time cost: 0.214s | CSRankNorm Done
+[1301923:MainThread](2026-01-11 21:37:04,842) INFO - qlib.timer - [log.py:127] - Time cost: 13.545s | fit & process data Done
+[1301923:MainThread](2026-01-11 21:37:04,843) INFO - qlib.timer - [log.py:127] - Time cost: 158.026s | Init data Done
+2026-01-11 21:37:04.843 | INFO     | __main__:_create_dataset:237 - Label Config: (['Ref($close, -2)/Ref($close, -1) - 1'], ['LABEL0'])
+2026-01-11 21:37:04.843 | INFO     | __main__:train_single_fold:569 - Training lgb_360_robust model (GPU=0)...
+2026-01-11 21:37:55.321 | INFO     | __main__:train_single_fold:573 - Generating predictions...
+2026-01-11 21:37:57.589 | INFO     | __main__:train_single_fold:592 - Fold 8 Current Model Metrics:
+2026-01-11 21:37:57.589 | INFO     | __main__:train_single_fold:593 -   IC=0.0182, ICIR=0.1256, RankIC=0.0369, RankICIR=0.2477
+2026-01-11 21:37:57.589 | INFO     | __main__:train_single_fold:602 - Running backtest for current model...
+[1301923:MainThread](2026-01-11 21:37:57,599) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+Training until validation scores don't improve for 50 rounds
+[20]	train's l2: 0.989289	valid's l2: 0.996139
+[40]	train's l2: 0.984447	valid's l2: 0.996187
+[60]	train's l2: 0.979973	valid's l2: 0.996435
+Early stopping, best iteration is:
+[29]	train's l2: 0.986933	valid's l2: 0.99604
+[1301923:MainThread](2026-01-11 21:39:10,890) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:39:10,891) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:39:20,505) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7ff099809ed0>
+backtest loop:   0%|          | 0/242 [00:00<?, ?it/s]backtest loop:   1%|          | 3/242 [00:00<00:10, 22.34it/s]backtest loop:   5%|▍         | 11/242 [00:00<00:04, 50.09it/s]backtest loop:   8%|▊         | 19/242 [00:00<00:03, 61.26it/s]backtest loop:  12%|█▏        | 28/242 [00:00<00:03, 67.74it/s]backtest loop:  16%|█▌        | 38/242 [00:00<00:02, 73.70it/s]backtest loop:  20%|█▉        | 48/242 [00:00<00:02, 77.01it/s]backtest loop:  24%|██▍       | 58/242 [00:00<00:02, 78.77it/s]backtest loop:  27%|██▋       | 66/242 [00:00<00:02, 77.70it/s]backtest loop:  31%|███▏      | 76/242 [00:01<00:02, 79.79it/s]backtest loop:  35%|███▍      | 84/242 [00:01<00:01, 79.13it/s]backtest loop:  38%|███▊      | 93/242 [00:01<00:01, 79.63it/s]backtest loop:  43%|████▎     | 103/242 [00:01<00:01, 80.82it/s]backtest loop:  46%|████▋     | 112/242 [00:01<00:01, 81.05it/s]backtest loop:  50%|█████     | 122/242 [00:01<00:01, 82.11it/s]backtest loop:  55%|█████▍    | 132/242 [00:01<00:01, 82.69it/s]backtest loop:  59%|█████▊    | 142/242 [00:01<00:01, 82.74it/s]backtest loop:  62%|██████▏   | 151/242 [00:01<00:01, 83.91it/s]backtest loop:  66%|██████▌   | 160/242 [00:02<00:01, 81.89it/s]backtest loop:  70%|██████▉   | 169/242 [00:02<00:00, 81.42it/s]backtest loop:  74%|███████▎  | 178/242 [00:02<00:00, 81.43it/s]backtest loop:  77%|███████▋  | 187/242 [00:02<00:00, 80.31it/s]backtest loop:  81%|████████  | 196/242 [00:02<00:00, 80.85it/s]backtest loop:  85%|████████▍ | 205/242 [00:02<00:00, 80.84it/s]backtest loop:  89%|████████▉ | 215/242 [00:02<00:00, 82.00it/s]backtest loop:  93%|█████████▎| 225/242 [00:02<00:00, 82.08it/s]backtest loop:  97%|█████████▋| 235/242 [00:02<00:00, 81.92it/s]backtest loop: 100%|██████████| 242/242 [00:03<00:00, 78.35it/s]
+2026-01-11 21:39:23.614 | INFO     | __main__:train_single_fold:606 - Current Model Backtest: Ann.Return(w/cost)=0.0766, Sharpe(w/cost)=0.9913, MaxDD=-0.0703
+2026-01-11 21:39:27.171 | INFO     | __main__:_generate_and_save_reports:518 - Saved backtest report to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pdf/fold_8_backtest_report.pdf
+2026-01-11 21:39:45.573 | INFO     | __main__:_generate_and_save_reports:538 - Saved 5 model performance graphs
+2026-01-11 21:39:45.694 | INFO     | __main__:_save_predictions_parquet:491 - Saved predictions to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/fold_8_pred.parquet
+2026-01-11 21:39:45.715 | INFO     | __main__:train_single_fold:637 - 
+--- Ensemble with 8 historical models ---
+2026-01-11 21:39:45.716 | INFO     | __main__:_generate_historical_predictions:412 - 
+--- Evaluating 8 historical models on fold 8 test data ---
+2026-01-11 21:39:48.437 | INFO     | __main__:_generate_historical_predictions:431 -   Model M0 on T8: RankIC=0.0111
+2026-01-11 21:39:49.884 | INFO     | __main__:_generate_historical_predictions:431 -   Model M1 on T8: RankIC=0.0139
+2026-01-11 21:39:51.312 | INFO     | __main__:_generate_historical_predictions:431 -   Model M2 on T8: RankIC=0.0154
+2026-01-11 21:39:52.750 | INFO     | __main__:_generate_historical_predictions:431 -   Model M3 on T8: RankIC=0.0206
+2026-01-11 21:39:54.221 | INFO     | __main__:_generate_historical_predictions:431 -   Model M4 on T8: RankIC=0.0215
+2026-01-11 21:39:55.709 | INFO     | __main__:_generate_historical_predictions:431 -   Model M5 on T8: RankIC=0.0236
+2026-01-11 21:39:57.107 | INFO     | __main__:_generate_historical_predictions:431 -   Model M6 on T8: RankIC=0.0320
+2026-01-11 21:39:58.753 | INFO     | __main__:_generate_historical_predictions:431 -   Model M7 on T8: RankIC=0.0303
+2026-01-11 21:39:59.359 | INFO     | __main__:train_single_fold:647 - Ensemble Metrics: IC=0.0187, ICIR=0.1204, RankIC=0.0338
+[1301923:MainThread](2026-01-11 21:39:59,367) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+[1301923:MainThread](2026-01-11 21:41:04,709) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:41:04,711) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:41:14,115) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7fef16a28810>
+backtest loop:   0%|          | 0/242 [00:00<?, ?it/s]backtest loop:   1%|          | 3/242 [00:00<00:10, 23.55it/s]backtest loop:   5%|▍         | 11/242 [00:00<00:04, 52.46it/s]backtest loop:   8%|▊         | 19/242 [00:00<00:03, 63.55it/s]backtest loop:  12%|█▏        | 28/242 [00:00<00:03, 70.60it/s]backtest loop:  15%|█▌        | 37/242 [00:00<00:02, 76.95it/s]backtest loop:  19%|█▊        | 45/242 [00:00<00:02, 76.89it/s]backtest loop:  22%|██▏       | 53/242 [00:00<00:02, 76.91it/s]backtest loop:  25%|██▌       | 61/242 [00:00<00:02, 77.42it/s]backtest loop:  29%|██▉       | 70/242 [00:00<00:02, 79.53it/s]backtest loop:  32%|███▏      | 78/242 [00:01<00:02, 74.95it/s]backtest loop:  36%|███▋      | 88/242 [00:01<00:01, 77.30it/s]backtest loop:  40%|████      | 98/242 [00:01<00:01, 78.91it/s]backtest loop:  44%|████▍     | 107/242 [00:01<00:01, 79.16it/s]backtest loop:  48%|████▊     | 117/242 [00:01<00:01, 80.23it/s]backtest loop:  52%|█████▏    | 127/242 [00:01<00:01, 80.86it/s]backtest loop:  57%|█████▋    | 137/242 [00:01<00:01, 81.07it/s]backtest loop:  61%|██████    | 147/242 [00:01<00:01, 81.51it/s]backtest loop:  65%|██████▍   | 157/242 [00:02<00:01, 82.43it/s]backtest loop:  69%|██████▉   | 167/242 [00:02<00:00, 81.91it/s]backtest loop:  73%|███████▎  | 176/242 [00:02<00:00, 80.07it/s]backtest loop:  76%|███████▋  | 185/242 [00:02<00:00, 77.29it/s]backtest loop:  81%|████████  | 195/242 [00:02<00:00, 78.76it/s]backtest loop:  85%|████████▍ | 205/242 [00:02<00:00, 79.40it/s]backtest loop:  89%|████████▉ | 215/242 [00:02<00:00, 80.07it/s]backtest loop:  93%|█████████▎| 225/242 [00:02<00:00, 80.36it/s]backtest loop:  97%|█████████▋| 235/242 [00:03<00:00, 80.59it/s]backtest loop: 100%|██████████| 242/242 [00:03<00:00, 77.45it/s]
+2026-01-11 21:41:17.260 | INFO     | __main__:train_single_fold:654 - Ensemble Backtest: Ann.Return(w/cost)=0.0466, Sharpe(w/cost)=0.4865
+2026-01-11 21:41:17.322 | INFO     | __main__:_print_summary:799 - 
+================================================================================
+2026-01-11 21:41:17.323 | INFO     | __main__:_print_summary:800 - ROLLING TRAINING SUMMARY
+2026-01-11 21:41:17.323 | INFO     | __main__:_print_summary:801 - ================================================================================
+2026-01-11 21:41:17.328 | INFO     | __main__:_print_summary:826 - 
+Average Metrics:
+2026-01-11 21:41:17.328 | INFO     | __main__:_print_summary:827 -   IC: 0.0314
+2026-01-11 21:41:17.328 | INFO     | __main__:_print_summary:828 -   ICIR: 0.2498
+2026-01-11 21:41:17.328 | INFO     | __main__:_print_summary:829 -   RankIC: 0.0465
+2026-01-11 21:41:17.328 | INFO     | __main__:_print_summary:830 -   Ann.Return: 0.0593
+2026-01-11 21:41:17.328 | INFO     | __main__:_print_summary:831 -   Sharpe: 0.6554
+2026-01-11 21:41:17.329 | INFO     | __main__:_print_summary:836 -   Ensemble RankIC (avg): 0.0412
+2026-01-11 21:41:17.331 | INFO     | __main__:_print_summary:840 - 
+Summary saved to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/summary.csv
+2026-01-11 21:41:17.331 | INFO     | __main__:_print_ensemble_matrix:740 - 
+================================================================================
+2026-01-11 21:41:17.331 | INFO     | __main__:_print_ensemble_matrix:741 - ENSEMBLE ANALYSIS MATRIX (RankIC)
+2026-01-11 21:41:17.331 | INFO     | __main__:_print_ensemble_matrix:742 - Rows: Test Fold, Columns: Model trained on Fold
+2026-01-11 21:41:17.331 | INFO     | __main__:_print_ensemble_matrix:743 - ================================================================================
+2026-01-11 21:41:17.334 | INFO     | __main__:_print_ensemble_matrix:766 - 
+Analysis:
+2026-01-11 21:41:17.334 | INFO     | __main__:_print_ensemble_matrix:770 -   Diagonal Mean (self-test): 0.0465
+2026-01-11 21:41:17.334 | INFO     | __main__:_print_ensemble_matrix:780 -   Off-diagonal Mean (historical on future): 0.0302
+2026-01-11 21:41:17.335 | INFO     | __main__:_print_ensemble_matrix:787 -   Historical models still have predictive power (avg RankIC=0.0302)
+2026-01-11 21:41:17.335 | INFO     | __main__:_print_ensemble_matrix:788 -   Ensemble is likely beneficial!
+2026-01-11 21:41:17.335 | INFO     | __main__:_print_ensemble_matrix:795 - 
+Ensemble matrix saved to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/ensemble_matrix.csv
+2026-01-11 21:41:17.335 | INFO     | __main__:_run_full_backtest:678 - 
+================================================================================
+2026-01-11 21:41:17.335 | INFO     | __main__:_run_full_backtest:679 - FULL BACKTEST (All Folds Combined)
+2026-01-11 21:41:17.335 | INFO     | __main__:_run_full_backtest:680 - ================================================================================
+2026-01-11 21:41:17.497 | INFO     | __main__:_run_full_backtest:705 - Full backtest period: 2016-01-01 to 2024-12-31
+2026-01-11 21:41:17.497 | INFO     | __main__:_run_full_backtest:706 - Total predictions: 1093245
+2026-01-11 21:41:19.420 | INFO     | __main__:_run_full_backtest:710 - Full Period Metrics: IC=0.0314, ICIR=0.2370, RankIC=0.0466
+[1301923:MainThread](2026-01-11 21:41:19,429) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+
+ Fold             Test Period       IC     ICIR   RankIC   Ann.Ret    Sharpe     MaxDD  Ens.RankIC  Ens.Sharpe
+    0 2016-01-01 ~ 2016-12-31 0.073851 0.624623 0.096181  0.308353  2.967268 -0.024338         NaN         NaN
+    1 2017-01-01 ~ 2017-12-31 0.045516 0.323335 0.067923 -0.016147 -0.277585 -0.055896    0.070376    1.159125
+    2 2018-01-01 ~ 2018-12-31 0.054000 0.465044 0.039202  0.037939  0.550313 -0.034680    0.041132   -0.366966
+    3 2019-01-01 ~ 2019-12-31 0.028407 0.245958 0.038778 -0.013360 -0.193166 -0.079802    0.039604   -0.895701
+    4 2020-01-01 ~ 2020-12-31 0.019475 0.134706 0.040446 -0.058819 -0.728811 -0.120027    0.041111   -0.206661
+    5 2021-01-01 ~ 2021-12-31 0.007716 0.055208 0.023137  0.046220  0.457005 -0.080886    0.027468   -0.154175
+    6 2022-01-01 ~ 2022-12-31 0.025895 0.198867 0.042176  0.107796  1.332636 -0.051620    0.042649    1.027283
+    7 2023-01-01 ~ 2023-12-31 0.009513 0.075060 0.033879  0.045505  0.799414 -0.028620    0.033231    1.615136
+    8 2024-01-01 ~ 2024-12-31 0.018152 0.125565 0.036882  0.076574  0.991319 -0.070306    0.033809    0.486487
+
+        M0      M1      M2      M3      M4      M5      M6      M7      M8
+T0  0.0962     NaN     NaN     NaN     NaN     NaN     NaN     NaN     NaN
+T1  0.0697  0.0679     NaN     NaN     NaN     NaN     NaN     NaN     NaN
+T2  0.0400  0.0388  0.0392     NaN     NaN     NaN     NaN     NaN     NaN
+T3  0.0367  0.0347  0.0323  0.0388     NaN     NaN     NaN     NaN     NaN
+T4  0.0338  0.0338  0.0399  0.0389  0.0404     NaN     NaN     NaN     NaN
+T5  0.0262  0.0291  0.0252  0.0278  0.0276  0.0231     NaN     NaN     NaN
+T6  0.0281  0.0331  0.0346  0.0387  0.0375  0.0375  0.0422     NaN     NaN
+T7  0.0135  0.0211  0.0238  0.0318  0.0257  0.0250  0.0329  0.0339     NaN
+T8  0.0111  0.0139  0.0154  0.0206  0.0215  0.0236  0.0320  0.0303  0.0369
+[1301923:MainThread](2026-01-11 21:42:33,075) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:42:33,078) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[1301923:MainThread](2026-01-11 21:43:30,549) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x7ff098d26ad0>
+backtest loop:   0%|          | 0/2187 [00:00<?, ?it/s]backtest loop:   0%|          | 3/2187 [00:00<01:23, 26.26it/s]backtest loop:   1%|          | 11/2187 [00:00<00:40, 53.77it/s]backtest loop:   1%|          | 20/2187 [00:00<00:33, 65.66it/s]backtest loop:   1%|▏         | 30/2187 [00:00<00:30, 71.59it/s]backtest loop:   2%|▏         | 40/2187 [00:00<00:27, 77.99it/s]backtest loop:   2%|▏         | 50/2187 [00:00<00:26, 81.73it/s]backtest loop:   3%|▎         | 60/2187 [00:00<00:25, 82.25it/s]backtest loop:   3%|▎         | 69/2187 [00:00<00:26, 81.09it/s]backtest loop:   4%|▎         | 79/2187 [00:01<00:25, 82.67it/s]backtest loop:   4%|▍         | 88/2187 [00:01<00:25, 80.78it/s]backtest loop:   4%|▍         | 98/2187 [00:01<00:25, 81.33it/s]backtest loop:   5%|▍         | 107/2187 [00:01<00:25, 80.11it/s]backtest loop:   5%|▌         | 116/2187 [00:01<00:26, 79.64it/s]backtest loop:   6%|▌         | 126/2187 [00:01<00:25, 79.54it/s]backtest loop:   6%|▌         | 136/2187 [00:01<00:25, 81.19it/s]backtest loop:   7%|▋         | 146/2187 [00:01<00:24, 81.80it/s]backtest loop:   7%|▋         | 156/2187 [00:01<00:25, 80.96it/s]backtest loop:   8%|▊         | 166/2187 [00:02<00:24, 81.65it/s]backtest loop:   8%|▊         | 175/2187 [00:02<00:25, 80.46it/s]backtest loop:   8%|▊         | 184/2187 [00:02<00:24, 80.31it/s]backtest loop:   9%|▉         | 194/2187 [00:02<00:24, 81.33it/s]backtest loop:   9%|▉         | 204/2187 [00:02<00:24, 82.48it/s]backtest loop:  10%|▉         | 214/2187 [00:02<00:23, 83.94it/s]backtest loop:  10%|█         | 224/2187 [00:02<00:22, 85.76it/s]backtest loop:  11%|█         | 234/2187 [00:02<00:22, 87.58it/s]backtest loop:  11%|█         | 244/2187 [00:03<00:22, 87.92it/s]backtest loop:  12%|█▏        | 253/2187 [00:03<00:22, 87.73it/s]backtest loop:  12%|█▏        | 263/2187 [00:03<00:22, 84.94it/s]backtest loop:  12%|█▏        | 273/2187 [00:03<00:21, 88.13it/s]backtest loop:  13%|█▎        | 283/2187 [00:03<00:21, 89.60it/s]backtest loop:  13%|█▎        | 293/2187 [00:03<00:20, 90.59it/s]backtest loop:  14%|█▍        | 303/2187 [00:03<00:20, 91.38it/s]backtest loop:  14%|█▍        | 313/2187 [00:03<00:20, 90.90it/s]backtest loop:  15%|█▍        | 323/2187 [00:03<00:20, 89.73it/s]backtest loop:  15%|█▌        | 332/2187 [00:04<00:20, 89.54it/s]backtest loop:  16%|█▌        | 342/2187 [00:04<00:20, 90.90it/s]backtest loop:  16%|█▌        | 352/2187 [00:04<00:20, 91.05it/s]backtest loop:  17%|█▋        | 362/2187 [00:04<00:19, 91.71it/s]backtest loop:  17%|█▋        | 372/2187 [00:04<00:20, 90.36it/s]backtest loop:  17%|█▋        | 382/2187 [00:04<00:20, 90.20it/s]backtest loop:  18%|█▊        | 392/2187 [00:04<00:20, 89.70it/s]backtest loop:  18%|█▊        | 401/2187 [00:04<00:20, 88.85it/s]backtest loop:  19%|█▊        | 410/2187 [00:04<00:20, 88.48it/s]backtest loop:  19%|█▉        | 419/2187 [00:04<00:20, 87.43it/s]backtest loop:  20%|█▉        | 428/2187 [00:05<00:19, 87.98it/s]backtest loop:  20%|██        | 438/2187 [00:05<00:19, 88.53it/s]backtest loop:  20%|██        | 448/2187 [00:05<00:19, 89.09it/s]backtest loop:  21%|██        | 460/2187 [00:05<00:17, 97.64it/s]backtest loop:  22%|██▏       | 472/2187 [00:05<00:16, 103.01it/s]backtest loop:  22%|██▏       | 483/2187 [00:05<00:16, 103.07it/s]backtest loop:  23%|██▎       | 495/2187 [00:05<00:15, 106.43it/s]backtest loop:  23%|██▎       | 507/2187 [00:05<00:16, 104.30it/s]backtest loop:  24%|██▎       | 519/2187 [00:05<00:15, 106.93it/s]backtest loop:  24%|██▍       | 530/2187 [00:06<00:16, 101.83it/s]backtest loop:  25%|██▍       | 541/2187 [00:06<00:15, 103.39it/s]backtest loop:  25%|██▌       | 552/2187 [00:06<00:16, 100.96it/s]backtest loop:  26%|██▌       | 564/2187 [00:06<00:15, 104.93it/s]backtest loop:  26%|██▋       | 575/2187 [00:06<00:15, 101.59it/s]backtest loop:  27%|██▋       | 586/2187 [00:06<00:16, 98.49it/s] backtest loop:  27%|██▋       | 596/2187 [00:06<00:16, 96.57it/s]backtest loop:  28%|██▊       | 606/2187 [00:06<00:16, 96.71it/s]backtest loop:  28%|██▊       | 616/2187 [00:06<00:16, 95.03it/s]backtest loop:  29%|██▊       | 626/2187 [00:07<00:16, 95.02it/s]backtest loop:  29%|██▉       | 636/2187 [00:07<00:16, 94.15it/s]backtest loop:  30%|██▉       | 646/2187 [00:07<00:16, 93.14it/s]backtest loop:  30%|██▉       | 656/2187 [00:07<00:16, 91.86it/s]backtest loop:  30%|███       | 666/2187 [00:07<00:16, 92.54it/s]backtest loop:  31%|███       | 676/2187 [00:07<00:17, 87.12it/s]backtest loop:  31%|███▏      | 686/2187 [00:07<00:17, 86.53it/s]backtest loop:  32%|███▏      | 696/2187 [00:07<00:17, 85.81it/s]backtest loop:  32%|███▏      | 706/2187 [00:07<00:17, 83.91it/s]backtest loop:  33%|███▎      | 716/2187 [00:08<00:17, 82.94it/s]backtest loop:  33%|███▎      | 726/2187 [00:08<00:17, 82.58it/s]backtest loop:  34%|███▎      | 735/2187 [00:08<00:17, 81.48it/s]backtest loop:  34%|███▍      | 744/2187 [00:08<00:17, 81.02it/s]backtest loop:  34%|███▍      | 754/2187 [00:08<00:17, 81.52it/s]backtest loop:  35%|███▍      | 764/2187 [00:08<00:17, 82.64it/s]backtest loop:  35%|███▌      | 774/2187 [00:08<00:16, 83.77it/s]backtest loop:  36%|███▌      | 784/2187 [00:08<00:16, 83.91it/s]backtest loop:  36%|███▋      | 793/2187 [00:09<00:16, 83.66it/s]backtest loop:  37%|███▋      | 803/2187 [00:09<00:16, 83.97it/s]backtest loop:  37%|███▋      | 812/2187 [00:09<00:16, 83.24it/s]backtest loop:  38%|███▊      | 821/2187 [00:09<00:16, 82.28it/s]backtest loop:  38%|███▊      | 830/2187 [00:09<00:16, 81.62it/s]backtest loop:  38%|███▊      | 839/2187 [00:09<00:16, 81.89it/s]backtest loop:  39%|███▉      | 849/2187 [00:09<00:16, 83.32it/s]backtest loop:  39%|███▉      | 859/2187 [00:09<00:15, 83.92it/s]backtest loop:  40%|███▉      | 869/2187 [00:09<00:15, 83.71it/s]backtest loop:  40%|████      | 879/2187 [00:10<00:15, 83.95it/s]backtest loop:  41%|████      | 888/2187 [00:10<00:15, 85.46it/s]backtest loop:  41%|████      | 897/2187 [00:10<00:15, 84.95it/s]backtest loop:  41%|████▏     | 906/2187 [00:10<00:15, 83.72it/s]backtest loop:  42%|████▏     | 915/2187 [00:10<00:16, 78.68it/s]backtest loop:  42%|████▏     | 923/2187 [00:10<00:16, 78.52it/s]backtest loop:  43%|████▎     | 933/2187 [00:10<00:15, 80.44it/s]backtest loop:  43%|████▎     | 943/2187 [00:10<00:15, 81.68it/s]backtest loop:  44%|████▎     | 953/2187 [00:10<00:14, 82.32it/s]backtest loop:  44%|████▍     | 963/2187 [00:11<00:14, 82.35it/s]backtest loop:  44%|████▍     | 973/2187 [00:11<00:14, 83.09it/s]backtest loop:  45%|████▍     | 982/2187 [00:11<00:15, 78.62it/s]backtest loop:  45%|████▌     | 991/2187 [00:11<00:15, 78.95it/s]backtest loop:  46%|████▌     | 1001/2187 [00:11<00:14, 79.77it/s]backtest loop:  46%|████▌     | 1011/2187 [00:11<00:14, 80.37it/s]backtest loop:  47%|████▋     | 1021/2187 [00:11<00:14, 81.18it/s]backtest loop:  47%|████▋     | 1031/2187 [00:11<00:13, 83.16it/s]backtest loop:  48%|████▊     | 1040/2187 [00:12<00:13, 82.69it/s]backtest loop:  48%|████▊     | 1050/2187 [00:12<00:13, 83.86it/s]backtest loop:  48%|████▊     | 1059/2187 [00:12<00:13, 82.85it/s]backtest loop:  49%|████▉     | 1068/2187 [00:12<00:13, 82.84it/s]backtest loop:  49%|████▉     | 1077/2187 [00:12<00:13, 82.40it/s]backtest loop:  50%|████▉     | 1087/2187 [00:12<00:13, 82.65it/s]backtest loop:  50%|█████     | 1096/2187 [00:12<00:13, 81.87it/s]backtest loop:  51%|█████     | 1105/2187 [00:12<00:13, 81.59it/s]backtest loop:  51%|█████     | 1115/2187 [00:12<00:13, 82.19it/s]backtest loop:  51%|█████▏    | 1125/2187 [00:13<00:12, 83.40it/s]backtest loop:  52%|█████▏    | 1135/2187 [00:13<00:12, 83.32it/s]backtest loop:  52%|█████▏    | 1145/2187 [00:13<00:12, 83.58it/s]backtest loop:  53%|█████▎    | 1155/2187 [00:13<00:12, 84.34it/s]backtest loop:  53%|█████▎    | 1164/2187 [00:13<00:12, 80.10it/s]backtest loop:  54%|█████▎    | 1174/2187 [00:13<00:12, 81.35it/s]backtest loop:  54%|█████▍    | 1184/2187 [00:13<00:12, 81.93it/s]backtest loop:  55%|█████▍    | 1194/2187 [00:13<00:11, 83.62it/s]backtest loop:  55%|█████▌    | 1204/2187 [00:14<00:11, 84.36it/s]backtest loop:  55%|█████▌    | 1213/2187 [00:14<00:11, 84.30it/s]backtest loop:  56%|█████▌    | 1222/2187 [00:14<00:14, 68.71it/s]backtest loop:  56%|█████▌    | 1230/2187 [00:14<00:15, 60.27it/s]backtest loop:  57%|█████▋    | 1237/2187 [00:14<00:16, 59.04it/s]backtest loop:  57%|█████▋    | 1244/2187 [00:14<00:16, 56.82it/s]backtest loop:  57%|█████▋    | 1250/2187 [00:14<00:16, 56.20it/s]backtest loop:  58%|█████▊    | 1258/2187 [00:14<00:15, 61.05it/s]backtest loop:  58%|█████▊    | 1268/2187 [00:15<00:13, 67.76it/s]backtest loop:  58%|█████▊    | 1278/2187 [00:15<00:12, 71.56it/s]backtest loop:  59%|█████▉    | 1287/2187 [00:15<00:12, 73.31it/s]backtest loop:  59%|█████▉    | 1297/2187 [00:15<00:11, 75.43it/s]backtest loop:  60%|█████▉    | 1305/2187 [00:15<00:11, 74.73it/s]backtest loop:  60%|██████    | 1314/2187 [00:15<00:11, 75.93it/s]backtest loop:  61%|██████    | 1324/2187 [00:15<00:11, 78.16it/s]backtest loop:  61%|██████    | 1333/2187 [00:15<00:10, 78.83it/s]backtest loop:  61%|██████▏   | 1343/2187 [00:16<00:10, 80.31it/s]backtest loop:  62%|██████▏   | 1353/2187 [00:16<00:10, 81.01it/s]backtest loop:  62%|██████▏   | 1363/2187 [00:16<00:10, 81.74it/s]backtest loop:  63%|██████▎   | 1373/2187 [00:16<00:10, 81.15it/s]backtest loop:  63%|██████▎   | 1383/2187 [00:16<00:09, 81.96it/s]backtest loop:  64%|██████▎   | 1393/2187 [00:16<00:09, 82.39it/s]backtest loop:  64%|██████▍   | 1402/2187 [00:16<00:10, 77.13it/s]backtest loop:  65%|██████▍   | 1411/2187 [00:16<00:09, 78.00it/s]backtest loop:  65%|██████▍   | 1421/2187 [00:17<00:09, 79.64it/s]backtest loop:  65%|██████▌   | 1431/2187 [00:17<00:09, 80.12it/s]backtest loop:  66%|██████▌   | 1441/2187 [00:17<00:09, 81.24it/s]backtest loop:  66%|██████▋   | 1451/2187 [00:17<00:08, 82.64it/s]backtest loop:  67%|██████▋   | 1461/2187 [00:17<00:08, 82.97it/s]backtest loop:  67%|██████▋   | 1470/2187 [00:17<00:08, 82.30it/s]backtest loop:  68%|██████▊   | 1480/2187 [00:17<00:08, 82.91it/s]backtest loop:  68%|██████▊   | 1490/2187 [00:17<00:08, 83.01it/s]backtest loop:  69%|██████▊   | 1500/2187 [00:17<00:08, 83.26it/s]backtest loop:  69%|██████▉   | 1510/2187 [00:18<00:08, 83.23it/s]backtest loop:  70%|██████▉   | 1520/2187 [00:18<00:07, 83.70it/s]backtest loop:  70%|██████▉   | 1529/2187 [00:18<00:07, 82.65it/s]backtest loop:  70%|███████   | 1538/2187 [00:18<00:07, 81.79it/s]backtest loop:  71%|███████   | 1547/2187 [00:18<00:07, 81.31it/s]backtest loop:  71%|███████   | 1556/2187 [00:18<00:08, 76.38it/s]backtest loop:  72%|███████▏  | 1564/2187 [00:18<00:09, 65.47it/s]backtest loop:  72%|███████▏  | 1571/2187 [00:18<00:09, 62.47it/s]backtest loop:  72%|███████▏  | 1578/2187 [00:19<00:09, 61.09it/s]backtest loop:  73%|███████▎  | 1586/2187 [00:19<00:09, 65.02it/s]backtest loop:  73%|███████▎  | 1594/2187 [00:19<00:08, 68.26it/s]backtest loop:  73%|███████▎  | 1604/2187 [00:19<00:08, 72.02it/s]backtest loop:  74%|███████▍  | 1614/2187 [00:19<00:07, 75.38it/s]backtest loop:  74%|███████▍  | 1624/2187 [00:19<00:07, 77.38it/s]backtest loop:  75%|███████▍  | 1633/2187 [00:19<00:07, 78.16it/s]backtest loop:  75%|███████▌  | 1643/2187 [00:19<00:06, 79.58it/s]backtest loop:  76%|███████▌  | 1653/2187 [00:20<00:06, 80.70it/s]backtest loop:  76%|███████▌  | 1663/2187 [00:20<00:06, 81.49it/s]backtest loop:  76%|███████▋  | 1673/2187 [00:20<00:06, 81.67it/s]backtest loop:  77%|███████▋  | 1683/2187 [00:20<00:06, 82.01it/s]backtest loop:  77%|███████▋  | 1693/2187 [00:20<00:06, 82.09it/s]backtest loop:  78%|███████▊  | 1703/2187 [00:20<00:05, 82.15it/s]backtest loop:  78%|███████▊  | 1712/2187 [00:20<00:05, 81.58it/s]backtest loop:  79%|███████▊  | 1722/2187 [00:20<00:05, 82.18it/s]backtest loop:  79%|███████▉  | 1732/2187 [00:20<00:05, 82.24it/s]backtest loop:  80%|███████▉  | 1742/2187 [00:21<00:05, 82.58it/s]backtest loop:  80%|████████  | 1752/2187 [00:21<00:05, 82.58it/s]backtest loop:  81%|████████  | 1762/2187 [00:21<00:05, 82.48it/s]backtest loop:  81%|████████  | 1771/2187 [00:21<00:05, 77.94it/s]backtest loop:  81%|████████▏ | 1781/2187 [00:21<00:05, 81.03it/s]backtest loop:  82%|████████▏ | 1790/2187 [00:21<00:04, 80.71it/s]backtest loop:  82%|████████▏ | 1799/2187 [00:21<00:04, 79.87it/s]backtest loop:  83%|████████▎ | 1808/2187 [00:21<00:04, 78.48it/s]backtest loop:  83%|████████▎ | 1816/2187 [00:22<00:05, 74.16it/s]backtest loop:  83%|████████▎ | 1826/2187 [00:22<00:04, 76.05it/s]backtest loop:  84%|████████▍ | 1836/2187 [00:22<00:04, 77.47it/s]backtest loop:  84%|████████▍ | 1846/2187 [00:22<00:04, 78.36it/s]backtest loop:  85%|████████▍ | 1855/2187 [00:22<00:04, 81.30it/s]backtest loop:  85%|████████▌ | 1864/2187 [00:22<00:04, 79.97it/s]backtest loop:  86%|████████▌ | 1873/2187 [00:22<00:03, 78.85it/s]backtest loop:  86%|████████▌ | 1881/2187 [00:22<00:03, 77.46it/s]backtest loop:  86%|████████▋ | 1890/2187 [00:22<00:03, 77.62it/s]backtest loop:  87%|████████▋ | 1900/2187 [00:23<00:03, 78.48it/s]backtest loop:  87%|████████▋ | 1910/2187 [00:23<00:03, 79.33it/s]backtest loop:  88%|████████▊ | 1920/2187 [00:23<00:03, 79.92it/s]backtest loop:  88%|████████▊ | 1930/2187 [00:23<00:03, 80.19it/s]backtest loop:  89%|████████▊ | 1940/2187 [00:23<00:03, 80.69it/s]backtest loop:  89%|████████▉ | 1949/2187 [00:23<00:02, 79.73it/s]backtest loop:  90%|████████▉ | 1959/2187 [00:23<00:02, 79.46it/s]backtest loop:  90%|█████████ | 1969/2187 [00:23<00:02, 80.13it/s]backtest loop:  90%|█████████ | 1978/2187 [00:24<00:02, 79.92it/s]backtest loop:  91%|█████████ | 1988/2187 [00:24<00:02, 80.22it/s]backtest loop:  91%|█████████▏| 1998/2187 [00:24<00:02, 80.68it/s]backtest loop:  92%|█████████▏| 2007/2187 [00:24<00:02, 79.92it/s]backtest loop:  92%|█████████▏| 2016/2187 [00:24<00:02, 79.49it/s]backtest loop:  93%|█████████▎| 2024/2187 [00:24<00:02, 78.33it/s]backtest loop:  93%|█████████▎| 2033/2187 [00:24<00:01, 78.45it/s]backtest loop:  93%|█████████▎| 2043/2187 [00:24<00:01, 78.96it/s]backtest loop:  94%|█████████▍| 2052/2187 [00:25<00:01, 78.62it/s]backtest loop:  94%|█████████▍| 2062/2187 [00:25<00:01, 79.31it/s]backtest loop:  95%|█████████▍| 2072/2187 [00:25<00:01, 80.08it/s]backtest loop:  95%|█████████▌| 2082/2187 [00:25<00:01, 80.50it/s]backtest loop:  96%|█████████▌| 2092/2187 [00:25<00:01, 80.82it/s]backtest loop:  96%|█████████▌| 2102/2187 [00:25<00:01, 80.24it/s]backtest loop:  97%|█████████▋| 2112/2187 [00:25<00:00, 80.82it/s]backtest loop:  97%|█████████▋| 2121/2187 [00:25<00:00, 79.70it/s]backtest loop:  97%|█████████▋| 2130/2187 [00:26<00:00, 77.57it/s]backtest loop:  98%|█████████▊| 2140/2187 [00:26<00:00, 79.06it/s]backtest loop:  98%|█████████▊| 2150/2187 [00:26<00:00, 79.80it/s]backtest loop:  99%|█████████▉| 2160/2187 [00:26<00:00, 80.50it/s]backtest loop:  99%|█████████▉| 2170/2187 [00:26<00:00, 80.71it/s]backtest loop: 100%|█████████▉| 2180/2187 [00:26<00:00, 81.02it/s]backtest loop: 100%|██████████| 2187/2187 [00:26<00:00, 81.87it/s]
+2026-01-11 21:43:57.368 | INFO     | __main__:_run_full_backtest:717 - Full Backtest Results:
+2026-01-11 21:43:57.368 | INFO     | __main__:_run_full_backtest:718 -   Ann.Return(w/cost): 0.0720
+2026-01-11 21:43:57.368 | INFO     | __main__:_run_full_backtest:719 -   Sharpe(w/cost): 0.9400
+2026-01-11 21:43:57.368 | INFO     | __main__:_run_full_backtest:720 -   MaxDD: -0.1909
+2026-01-11 21:44:05.482 | INFO     | __main__:_generate_and_save_reports:518 - Saved backtest report to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pdf/full_backtest_report.pdf
+2026-01-11 21:44:27.595 | INFO     | __main__:_generate_and_save_reports:538 - Saved 5 model performance graphs
+2026-01-11 21:44:27.836 | INFO     | __main__:_run_full_backtest:734 - Saved full predictions to /home/ethan/qlib/custom_exp/run_20260111_205203_lgb_360_robust_6y/pred/full_pred.parquet
+[1301923:MainThread](2026-01-11 21:44:28,397) INFO - qlib.timer - [log.py:127] - Time cost: 0.000s | waiting `async_log` Done
